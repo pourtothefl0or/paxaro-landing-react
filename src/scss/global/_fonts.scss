@@ -1,0 +1,6 @@
+// === FONTS ===
+@include font-face("Montserrat", "../fonts/Montserrat/Montserrat-Regular", 400, normal);
+
+@mixin Montserrat() {
+  font-family: "Montserrat", sans-serif;
+}
