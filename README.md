@@ -1,1 +1,0 @@
-# paxaro-landing-react
