@@ -1,14 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../../constants'
-
-// --- components ---
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
-
-// --- ui ---
-import { Input, Btn } from '../../../ui'
+import { Input, Button } from '../../../ui'
 
 const Feedback = () => {
   return (
@@ -30,7 +24,7 @@ const Feedback = () => {
             <FeedbackAlert>
               Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
             </FeedbackAlert>
-            <FeedbackBtn xxl>Отправить форму</FeedbackBtn>
+            <FeedbackButton xxl>Отправить форму</FeedbackButton>
           </FeedbackFormWrapper>
         </form>
       </FeedbackContainer>
@@ -73,7 +67,7 @@ const FeedbackAlert = styled.p`
   a {
     color: inherit;
     text-decoration: underline;
-    transition: all var(--primary-animation);
+    transition: all ${PRIMARY.primaryAnimation};
     transition-property: color;
 
     &:hover {
@@ -82,7 +76,7 @@ const FeedbackAlert = styled.p`
   }
 `
 
-const FeedbackBtn = styled(Btn)`
+const FeedbackButton = styled(Button)`
   justify-self: end;
 `
 

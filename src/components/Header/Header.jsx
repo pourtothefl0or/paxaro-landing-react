@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../constants'
-
-// --- components ---
-import { MenuBtn } from '../MenuBtn'
+import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../constants'
+import { MenuButton } from '../MenuButton'
 import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Menu } from '../Menu'
@@ -14,7 +10,7 @@ import { Social } from '../Social'
 import { Language } from '../Language'
 
 // --- ui ---
-import { Btn } from '../../ui'
+import { Button } from '../../ui'
 
 const Header = () => {
   return (
@@ -22,7 +18,7 @@ const Header = () => {
       <HeaderContainer>
         <HeaderTop>
           <Logo/>
-          <HeaderMenuBtn/>
+          <HeaderMenuButton/>
         </HeaderTop>
         <HeaderBottom>
           <HeaderNav>
@@ -33,13 +29,13 @@ const Header = () => {
               <StyledSubMenu/>
             </HeaderSubMenuContainer>
           </HeaderSubMenu>
-          <HeaderBtns>
-            <HeaderBtnsTitle>Личный кабинет</HeaderBtnsTitle>
-            <HeaderBtnsWrapper>
-              <Btn>Зарегистрироваться</Btn>
-              <BtnLine>Войти</BtnLine>
-            </HeaderBtnsWrapper>
-          </HeaderBtns>
+          <HeaderButtons>
+            <HeaderButtonsTitle>Личный кабинет</HeaderButtonsTitle>
+            <HeaderButtonsWrapper>
+              <Button>Зарегистрироваться</Button>
+              <ButtonLine>Войти</ButtonLine>
+            </HeaderButtonsWrapper>
+          </HeaderButtons>
           <HeaderSocial/>
           <Language/>
         </HeaderBottom>
@@ -68,12 +64,10 @@ const HeaderTop = styled.div`
     right: 0;
     top: 0;
     z-index: 100;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 22px var(--container-indent);
+    padding: 22px ${PRIMARY.primaryIndent};
     width: 100%;
     background-color: ${COLORS.black};
   }
@@ -87,7 +81,7 @@ const HeaderMenu = styled(Menu)`
   }
 `
 
-const HeaderMenuBtn = styled(MenuBtn)`
+const HeaderMenuButton = styled(MenuButton)`
   @media (min-width: 1024px) {
     display: none;
   }
@@ -110,16 +104,17 @@ const HeaderBottom = styled.div`
     top: 0;
     bottom: 0;
     display: block;
-    padding: 90px var(--container-indent) var(--container-indent);
+    padding: 90px ${PRIMARY.primaryIndent} ${PRIMARY.primaryIndent};
     height: 100vh;
     background-color: ${COLORS.black};
     opacity: 0;
     visibility: hidden;
     transform: translateY(-100%);
-    transition: all var(--primary-animation);
+    transition: all ${PRIMARY.primaryAnimation};
     transition-property: transform, opacity, visibility;
 
     &.is-open {
+      z-index: 50;
       opacity: 1;
       visibility: visible;
       transform: translateY(0%);
@@ -130,7 +125,7 @@ const HeaderBottom = styled.div`
 const HeaderNav = styled.nav`
   @media (max-width: 1023px) {
     padding: 24px 0;
-    border-bottom: var(--primary-border);
+    border-bottom: ${SECONDARY.secondaryBorder};
   }
 `
 
@@ -147,7 +142,7 @@ const HeaderSubMenu = styled.div`
 
   @media (max-width: 1023px) {
     padding: 24px 0;
-    border-bottom: var(--primary-border);
+    border-bottom: ${SECONDARY.secondaryBorder};
   }
 `
 
@@ -165,7 +160,7 @@ const StyledSubMenu = styled(SubMenu)`
   }
 `
 
-const HeaderBtns = styled.div`
+const HeaderButtons = styled.div`
   margin: 0 8px 0 auto;
 
   @media (max-width: 1023px) {
@@ -173,7 +168,7 @@ const HeaderBtns = styled.div`
   }
 `
 
-const HeaderBtnsTitle = styled.h2`
+const HeaderButtonsTitle = styled.h2`
   margin: 0 0 18px;
   ${TYPOGRAPHY.subtitle1Bold24}
   color: ${COLORS.white};
@@ -183,7 +178,7 @@ const HeaderBtnsTitle = styled.h2`
   }
 `
 
-const HeaderBtnsWrapper = styled.div`
+const HeaderButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -193,18 +188,20 @@ const HeaderBtnsWrapper = styled.div`
   }
 `
 
-const BtnLine = styled(Btn)`
+const ButtonLine = styled(Button)`
   border-color: ${COLORS.green};
   color: ${COLORS.white};
   background: transparent;
 `
 
 const HeaderSocial = styled(Social)`
-  padding-bottom: 24px;
-  border-bottom: var(--primary-border);
-
   @media (min-width: 1024px) {
     display: none;
+  }
+
+  @media (max-width: 1023px) {
+    border-bottom: ${SECONDARY.secondaryBorder};
+    padding-bottom: 24px;
   }
 `
 

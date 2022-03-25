@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
 const Language = () => {
   const languageList = [
@@ -52,18 +50,18 @@ const Language = () => {
 const StyledLanguage = styled.button`
   display: inline-block;
   border: 2px solid transparent;
-  border-radius: var(--primary-radius);
+  border-radius: ${PRIMARY.primaryRadius};
   padding: 9px;
   ${TYPOGRAPHY.caption2Semibold14}
   text-align: center;
   color: ${COLORS.black};
   background: ${COLORS.white};
-  transition: all var(--primary-animation);
+  transition: all ${PRIMARY.primaryAnimation};
   transition-property: box-shadow;
   cursor: pointer;
 
   &:hover {
-    box-shadow: var(--primary-shadow);
+    box-shadow: ${PRIMARY.primaryShadow};
   }
 `
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { PRIMARY } from '../../constants'
 
 const Container = ({className, children}) => {
   return (
@@ -11,8 +12,8 @@ const Container = ({className, children}) => {
 
 const StyledContainer = styled.div`
   margin: 0 auto;
-  padding: 0 var(--container-indent);
-  max-width: calc(1240px + (var(--container-indent) * 2));
+  padding: 0 ${PRIMARY.primaryIndent};
+  max-width: calc(1240px + (${PRIMARY.primaryIndent} * 2));
 `
 
 export default Container

@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../constants'
-
-// --- images ---
-import toTop from '../../images/icons/to-top.svg'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
+import toTop from '../../assets/images/Icons/to-top.svg'
 
 const ToTop = ({className, children}) => {
   return (
@@ -28,7 +24,7 @@ const StyledToTop = styled.button`
   span {
     ${TYPOGRAPHY.caption2Semibold14}
     color: ${COLORS.white};
-    transition: all var(--primary-animation);
+    transition: all ${PRIMARY.primaryAnimation};
     transition-property: color;
   }
 

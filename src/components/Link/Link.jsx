@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
 const Link = ({className, children}) => {
   return (
@@ -13,7 +11,7 @@ const Link = ({className, children}) => {
 const StyledLink = styled.a`
   ${TYPOGRAPHY.caption2Semibold14}
   color: ${COLORS.white};
-  transition: all var(--primary-animation);
+  transition: all ${PRIMARY.primaryAnimation};
   transition-property: color;
 
   &:hover {

@@ -1,10 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../../constants'
-
-// --- components ---
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title } from '../../../components'
 
 const Advantages = () => {
@@ -69,9 +65,9 @@ const AdvantagesCards = styled.ul`
 
 const AdvantagesCardsItem = styled.li`
   // default: black
-  border-radius: var(--secondary-radius);
+  border-radius: ${PRIMARY.primaryRadius};
   padding: 40px 40px 200px;
-  ${TYPOGRAPHY.title3_Bold36}
+  ${TYPOGRAPHY.title3Bold36}
   color: ${COLORS.white};
   background-color: ${COLORS.black};
 

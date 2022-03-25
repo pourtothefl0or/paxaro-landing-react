@@ -1,3 +1,5 @@
-export { VARS } from './vars'
 export { COLORS } from './colors'
 export { TYPOGRAPHY } from './typography'
+export { GRID } from './grid'
+export { PRIMARY } from './primary'
+export { SECONDARY } from './secondary'

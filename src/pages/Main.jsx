@@ -1,21 +1,11 @@
 import React from 'react'
-
-// --- styles ---
-import '../styles/common.scss'
-
-// --- constants ---
-import { VARS } from '../constants'
-
-// --- components ---
+import '../styles/style.css'
 import { Header, Footer } from '../components'
-
-// --- page components ---
 import { Hero, Advantages, Offers, Program, App, Feedback } from '../pageComponents/Index'
 
 const Main = () => {
   return (
     <>
-      <VARS/>
       <Header/>
       <main>
         <Hero/>
