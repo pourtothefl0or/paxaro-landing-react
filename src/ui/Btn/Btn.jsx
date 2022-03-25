@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components'
 // --- constants ---
 import { COLORS, TYPOGRAPHY } from '../../constants'
 
-const Btn = ({className, children}) => {
+const Btn = ({className, children, ...props}) => {
   return (
-    <StyledBtn className={className}>
+    <StyledBtn className={className} {...props}>
       {children}
     </StyledBtn>
   )
@@ -34,6 +34,11 @@ const StyledBtn = styled.button`
     padding: 21px 24px;
     ${TYPOGRAPHY.subtitle1Bold24}
   `}
+
+  @media (max-width: 1023px) {
+    padding: 12px 26px;
+    ${TYPOGRAPHY.caption2Semibold14}
+  }
 `
 
 export default Btn

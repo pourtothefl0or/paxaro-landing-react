@@ -25,7 +25,7 @@ const Hero = () => {
           <HeroDescr>
             Инвестируй в криптовалюту и управляй цифровыми активами с помощью Smart Portfolio
           </HeroDescr>
-          <Btn>Попробовать бесплатно</Btn>
+          <Btn xxl>Попробовать бесплатно</Btn>
         </HeroContent>
       </HeroContainer>
       <picture>

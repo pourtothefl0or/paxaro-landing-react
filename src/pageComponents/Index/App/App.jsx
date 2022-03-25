@@ -81,6 +81,11 @@ const AppCard = styled.div`
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 88%);
     }
   `}
+
+  @media (max-width: 1023px) {
+    padding: 40px;
+    height: 335px;
+  }
 `
 
 const AppCardImage = styled.img`
@@ -88,6 +93,11 @@ const AppCardImage = styled.img`
   bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
+
+  @media (max-width: 1023px) {
+    bottom: -150px;
+    max-width: 226px;
+  }
 `
 
 const AppCardDesrc = styled.p`

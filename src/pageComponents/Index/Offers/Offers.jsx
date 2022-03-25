@@ -60,7 +60,7 @@ const Offers = () => {
                 <OffersItemHeader>
                   <OffersItemTitle>{item.name}</OffersItemTitle>
                   <OffersItemPrice>{item.price}</OffersItemPrice>
-                  <OffersBtn>Купить</OffersBtn>
+                  <OffersBtn xxl>Купить</OffersBtn>
                 </OffersItemHeader>
                 <OffersServices>
                   {

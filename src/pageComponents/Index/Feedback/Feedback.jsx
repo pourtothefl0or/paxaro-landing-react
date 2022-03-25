@@ -30,7 +30,7 @@ const Feedback = () => {
             <FeedbackAlert>
               Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
             </FeedbackAlert>
-            <FeedbackBtn>Отправить форму</FeedbackBtn>
+            <FeedbackBtn xxl>Отправить форму</FeedbackBtn>
           </FeedbackFormWrapper>
         </form>
       </FeedbackContainer>
@@ -57,6 +57,10 @@ const FeedbackFormWrapper = styled.div`
   @media (max-width: 1023px) {
     --grid-columns: 1fr;
     row-gap: 30px;
+
+    button {
+      justify-self: center;
+    }
   }
 `
 
