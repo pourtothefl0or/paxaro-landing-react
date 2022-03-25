@@ -1,20 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { COLORS, PRIMARY } from '../../constants'
 
-// --- constants ---
-import { COLORS } from '../../constants'
-
-const MenuBtn = ({className}) => {
+const MenuButton = ({className}) => {
   return (
-    <StyledMenuBtn className={className}>
+    <StyledMenuButton className={className}>
       <span></span>
       <span></span>
       <span></span>
-    </StyledMenuBtn>
+    </StyledMenuButton>
   )
 }
 
-const StyledMenuBtn = styled.button`
+const StyledMenuButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +22,7 @@ const StyledMenuBtn = styled.button`
   width: 24px;
   height: 24px;
   background: transparent;
-  transition: all var(--primary-animation);
+  transition: all ${PRIMARY.primaryAnimation};
   transition-property: width, height;
   cursor: pointer;
 
@@ -34,7 +32,7 @@ const StyledMenuBtn = styled.button`
     width: 18px;
     height: 2px;
     background-color: ${COLORS.white};
-    transition: all var(--primary-animation);
+    transition: all ${PRIMARY.primaryAnimation};
     transition-property: width, opacity, visibility, transform;
   }
 
@@ -56,4 +54,4 @@ const StyledMenuBtn = styled.button`
   }
 `
 
-export default MenuBtn
+export default MenuButton

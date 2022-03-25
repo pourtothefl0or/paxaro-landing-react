@@ -1,17 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../../constants'
-
-// --- components ---
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title } from '../../../components'
-
-// --- ui ---
-import { Btn } from '../../../ui'
-
-// --- image ---
-import offerItemCircle from '../../../images/offers/offer-item-circle.svg'
+import { Button } from '../../../ui'
+import offerItemCircle from '../../../assets/images/Offers/offer-item-circle.svg'
 
 const Offers = () => {
   const offersList = [
@@ -60,7 +52,7 @@ const Offers = () => {
                 <OffersItemHeader>
                   <OffersItemTitle>{item.name}</OffersItemTitle>
                   <OffersItemPrice>{item.price}</OffersItemPrice>
-                  <OffersBtn>Купить</OffersBtn>
+                  <OffersButton xxl>Купить</OffersButton>
                 </OffersItemHeader>
                 <OffersServices>
                   {
@@ -96,7 +88,7 @@ const OffersItem = styled.li`
 
 const OffersItemHeader = styled.div`
   padding-bottom: 5px;
-  border-bottom: var(--primary-border);
+  border-bottom: ${PRIMARY.primaryBorder};
 
   @media (min-width: 1024px) {
     display: flex;
@@ -110,42 +102,52 @@ const OffersItemHeader = styled.div`
     align-items: center;
     grid-template-areas:
       "title title"
-      "price btn";
+      "price Button";
     margin-bottom: 24px;
   }
 `
 
 const OffersItemTitle = styled.h3`
   margin: 0;
-  ${TYPOGRAPHY.title0_Bold72}
+  ${TYPOGRAPHY.title0Bold72}
 
   @media (max-width: 1023px) {
     grid-area: title;
-    ${TYPOGRAPHY.title2_Bold40}
+    ${TYPOGRAPHY.title2Bold40}
     text-align: center;
   }
 `
 
 const OffersItemPrice = styled.p`
   margin: 0 55px 0 auto;
-  ${TYPOGRAPHY.title0_Bold72}
+  ${TYPOGRAPHY.title0Bold72}
 
   @media (max-width: 1023px) {
     grid-area: price;
     justify-self: start;
     margin: 0;
-    ${TYPOGRAPHY.title2_Bold40}
+    ${TYPOGRAPHY.title2Bold40}
   }
 `
 
-const OffersBtn = styled(Btn)`
+const OffersButton = styled(Button)`
   @media (max-width: 1023px) {
-    grid-area: btn;
+    grid-area: Button;
     justify-self: end;
   }
 `
 
 const OffersServices = styled.ul`
+  --grid-columns: repeat(2, 1fr);
+
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  align-items: center;
+  row-gap: 30px;
+
+  @media (max-width: 767px) {
+    --grid-columns: 1fr;
+  }
 `
 
 const OffersServicesItem = styled.li`
@@ -171,17 +173,17 @@ const OffersServicesItem = styled.li`
   @media (min-width: 1024px) {
     ${TYPOGRAPHY.subtitle1Bold24}
 
-    &:not(:last-child) {
+    /* &:not(:last-child) {
       margin-bottom: 30px;
-    }
+    } */
   }
 
   @media (max-width: 1023px) {
     ${TYPOGRAPHY.caption1Semibold18}
 
-    &:not(:last-child) {
+    /* &:not(:last-child) {
       margin-bottom: 18px;
-    }
+    } */
   }
 `
 

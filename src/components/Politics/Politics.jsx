@@ -1,10 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { COLORS } from '../../constants'
-
-// --- components ---
 import { Link } from '../'
 
 const Politics = ({className}) => {

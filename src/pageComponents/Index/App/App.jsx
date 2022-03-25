@@ -1,16 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-
-// --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../../constants'
-
-// --- components ---
+import { COLORS, TYPOGRAPHY, SECONDARY } from '../../../constants'
 import { Container, AppsWhite } from '../../../components'
-
-// --- images ---
-import logo from '../../../images/app/logo.svg'
-import appPhone from '../../../images/app/app-phone.png'
-import appPhone2x from '../../../images/app/app-phone@2x.png'
+import logo from '../../../assets/images/App/logo.svg'
+import appPhone from '../../../assets/images/App/app-phone.png'
+import appPhone2x from '../../../assets/images/App/app-phone@2x.png'
 
 const App = () => {
   return (
@@ -59,7 +53,7 @@ const AppCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: var(--secondary-radius);
+  border-radius: ${SECONDARY.secondaryRadius};
   padding: 20px;
   height: 790px;
   background-color: ${COLORS.black};
@@ -81,6 +75,11 @@ const AppCard = styled.div`
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 88%);
     }
   `}
+
+  @media (max-width: 1023px) {
+    padding: 40px;
+    height: 335px;
+  }
 `
 
 const AppCardImage = styled.img`
@@ -88,6 +87,11 @@ const AppCardImage = styled.img`
   bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
+
+  @media (max-width: 1023px) {
+    bottom: -150px;
+    max-width: 226px;
+  }
 `
 
 const AppCardDesrc = styled.p`

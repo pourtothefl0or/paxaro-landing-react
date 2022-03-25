@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- components ---
 import { Link } from '../'
 
 const SubMenu = ({className}) => {

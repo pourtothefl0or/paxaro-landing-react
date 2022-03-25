@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- components ---
 import { Link } from '../'
 
 const Menu = ({className}) => {
@@ -20,7 +18,6 @@ const Menu = ({className}) => {
           </li>
         )
       }
-
     </StyledMenu>
   )
 }

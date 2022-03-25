@@ -1,26 +1,26 @@
 export const TYPOGRAPHY = {
   // --- title ---
-  title0_Bold72:`
+  title0Bold72:`
     font-weight: 700;
     font-size: 72px;
     line-height: 101px;
     letter-spacing: 0.01em;
   `,
 
-  title1_Bold48:`
+  title1Bold48:`
     font-weight: 700;
     font-size: 48px;
     line-height: 67px;
   `,
 
-  title2_Bold40:`
+  title2Bold40:`
     font-weight: 700;
     font-size: 40px;
     line-height: 56px;
     letter-spacing: 0.01em;
   `,
 
-  title3_Bold36:`
+  title3Bold36:`
     font-weight: 700;
     font-size: 36px;
     line-height: 50px;

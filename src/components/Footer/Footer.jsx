@@ -1,10 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { COLORS, TYPOGRAPHY } from '../../constants'
-
-// --- components ---
 import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Apps } from '../Apps'
@@ -13,9 +9,7 @@ import { SubMenu } from '../SubMenu'
 import { Social } from '../Social'
 import { Politics } from '../Politics'
 import { ToTop } from '../ToTop'
-
-// --- ui ---
-import { Btn } from '../../ui'
+import { Button } from '../../ui'
 
 const Footer = () => {
   return (
@@ -29,9 +23,9 @@ const Footer = () => {
             <SubMenu/>
             <Social/>
           </FooterColumns>
-          <FooterBtns>
-            <Btn>Личный кабинет</Btn>
-          </FooterBtns>
+          <FooterButtons>
+            <Button>Личный кабинет</Button>
+          </FooterButtons>
         </FooterTop>
         <FooterBottom>
           <Copyright>&copy;&nbsp;2021 Kadex Enterprise pte Ltd.</Copyright>
@@ -65,7 +59,7 @@ const FooterTop = styled.div`
     grid-template-columns: max-content 1fr 85px max-content;
     grid-template-rows: max-content 45px max-content;
     grid-template-areas:
-      "logo columns . btns"
+      "logo columns . Buttons"
       ". columns . ."
       "apps columns . .";
   }
@@ -117,9 +111,9 @@ const FooterColumns = styled.div`
   }
 `
 
-const FooterBtns = styled.div`
+const FooterButtons = styled.div`
   @media (min-width: 1024px) {
-    grid-area: btns;
+    grid-area: Buttons;
     display: flex;
     flex-direction: column;
     align-items: baseline;

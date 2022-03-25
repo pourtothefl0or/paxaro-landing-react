@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // --- constants ---
-import { COLORS, TYPOGRAPHY } from '../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
 const Input = ({...props}) => {
   return (
@@ -17,7 +17,7 @@ const InputLabel = styled.label`
   position: relative;
   display: inline-block;
 
-  &.is-focus {
+  &:focus-within {
     p {
       color: ${COLORS.green};
       ${TYPOGRAPHY.caption2Semibold14}
@@ -45,7 +45,7 @@ const InputPlaceholder = styled.p`
   color: ${COLORS.darkGray};
   ${TYPOGRAPHY.body1Regular18}
   transform: translateY(-50%);
-  transition: all var(--primary-animation);
+  transition: all ${PRIMARY.primaryAnimation};
   transition-property: font-size, color, transform;
 `
 
@@ -58,7 +58,7 @@ const StyledInput = styled.input`
   color: ${COLORS.black};
   ${TYPOGRAPHY.caption1Semibold18}
   caret-color: ${COLORS.black};
-  transform: all var(--primary-animation);
+  transform: all ${PRIMARY.primaryAnimation};
   transition-property: border-color;
 `
 

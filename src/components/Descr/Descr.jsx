@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { TYPOGRAPHY } from '../../constants'
 
 const Descr = ({children}) => {

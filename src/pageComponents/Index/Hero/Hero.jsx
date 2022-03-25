@@ -1,18 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { COLORS, TYPOGRAPHY } from '../../../constants'
-
-// --- components ---
 import { Container } from '../../../components'
-
-// --- ui ---
-import { Btn } from '../../../ui'
-
-// --- images ---
-import heroImage from '../../../images/hero/hero-image.png'
-import heroImage2x from '../../../images/hero/hero-image@2x.png'
+import { Button } from '../../../ui'
+import heroImage from '../../../assets/images/Hero/hero-image.png'
+import heroImage2x from '../../../assets/images/Hero/hero-image@2x.png'
 
 const Hero = () => {
   return (
@@ -25,7 +17,7 @@ const Hero = () => {
           <HeroDescr>
             Инвестируй в криптовалюту и управляй цифровыми активами с помощью Smart Portfolio
           </HeroDescr>
-          <Btn>Попробовать бесплатно</Btn>
+          <Button xxl>Попробовать бесплатно</Button>
         </HeroContent>
       </HeroContainer>
       <picture>
@@ -43,11 +35,9 @@ const StyledHero = styled.section`
 
 const HeroContainer = styled(Container)`
   padding-top: 100px;
-  padding-bottom: 700px;
 
   @media (max-width: 1023px) {
     padding-top: 150px;
-    padding-bottom: 300px;
   }
 `
 
@@ -60,7 +50,7 @@ const HeroContent = styled.div`
 const HeroTitle = styled.h1`
   margin: 0 0 24px;
   max-width: 635px;
-  ${TYPOGRAPHY.title1_Bold48}
+  ${TYPOGRAPHY.title1Bold48}
   text-align: center;
 
   @media (max-width: 1023px) {
@@ -82,13 +72,13 @@ const HeroDescr = styled.p`
 `
 
 const HeroImage = styled.img`
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-45%);
+  display: block;
+  margin: 55px auto 0;
 
   @media (max-width: 1023px) {
-    max-width: 522px;
+    margin-top: 32px;
+    max-width: none;
+    width: 520px;
   }
 `
 

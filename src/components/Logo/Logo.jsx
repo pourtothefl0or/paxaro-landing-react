@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- images ---
-import logoDesktop from '../../images/logo/logo-desktop.svg'
-import logoMobile from '../../images/logo/logo-mobile.svg'
+import logoDesktop from '../../assets/images/Logo/logo-desktop.svg'
+import logoMobile from '../../assets/images/Logo/logo-mobile.svg'
 
 const Logo = ({className}) => {
   return (

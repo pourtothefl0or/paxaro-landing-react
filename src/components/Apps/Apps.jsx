@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- images ---
-import appStore from '../../images/icons/app-store.svg'
-import googlePlay from '../../images/icons/google-play.svg'
+import { PRIMARY } from '../../constants'
+import appStore from '../../assets/images/Icons/app-store.svg'
+import googlePlay from '../../assets/images/Icons/google-play.svg'
 
 const Apps = ({className}) => {
   const appsList = [
@@ -30,7 +29,7 @@ const StyledApps = styled.div`
 `
 
 const AppsLink = styled.a`
-  transition: all var(--primary-animation);
+  transition: all ${PRIMARY.primaryAnimation};
   transition-property: transform;
 
   &:hover {

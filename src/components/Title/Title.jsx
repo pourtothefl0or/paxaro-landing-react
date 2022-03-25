@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { COLORS, TYPOGRAPHY } from '../../constants'
 
 const Title = ({subtitle, title}) => {
@@ -36,7 +34,7 @@ const StyledSubTitle = styled.p`
 const StyledTitle = styled.h2`
   display: block;
   margin: 0 0 20px;
-  ${TYPOGRAPHY.title2_Bold40}
+  ${TYPOGRAPHY.title2Bold40}
   color: ${COLORS.black};
 
   @media (max-width: 1023px) {
