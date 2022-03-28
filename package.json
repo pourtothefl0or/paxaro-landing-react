@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "react-range": "^1.8.12",
     "react-select": "^5.2.2",
     "style-components": "^0.1.0",
     "styled-components": "^5.3.3"

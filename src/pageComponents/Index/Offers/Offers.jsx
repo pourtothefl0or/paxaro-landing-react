@@ -143,7 +143,7 @@ const OffersServices = styled.ul`
   display: grid;
   grid-template-columns: var(--grid-columns);
   align-items: center;
-  row-gap: 30px;
+  gap: 30px 110px;
 
   @media (max-width: 767px) {
     --grid-columns: 1fr;

@@ -1,18 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from '../'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
-const Menu = ({className}) => {
-  let menuList = [
-    { id: 1, label: 'О продукте' },
-    { id: 2, label: 'Блог' },
-    { id: 3, label: 'О компании' }
-  ]
-
+const Menu = ({className, links}) => {
   return (
     <StyledMenu className={className}>
       {
-        menuList.map(item =>
+        links.map(item =>
           <li key={item.id}>
             <Link>{item.label}</Link>
           </li>
@@ -30,6 +24,19 @@ const StyledMenu = styled.ul`
 
   li:not(:last-child) {
     margin-right: 30px;
+  }
+`
+
+const Link = styled.a`
+  ${TYPOGRAPHY.caption2Semibold14}
+  color: ${COLORS.white};
+  transition: all ${PRIMARY.primaryAnimation};
+  transition-property: color;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    color: ${COLORS.green};
   }
 `
 

@@ -5,13 +5,10 @@ import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Apps } from '../Apps'
 import { Menu } from '../Menu'
-import { SubMenu } from '../SubMenu'
-import { Social } from '../Social'
-import { Politics } from '../Politics'
 import { ToTop } from '../ToTop'
 import { Button } from '../../ui'
 
-const Footer = () => {
+const Footer = ({...props}) => {
   return (
     <StyledFooter>
       <FooterContainer>
@@ -19,9 +16,9 @@ const Footer = () => {
           <FooterLogo/>
           <FooterApps/>
           <FooterColumns>
-            <Menu/>
-            <SubMenu/>
-            <Social/>
+            <Menu links={props.links.menuList}/>
+            <Menu links={props.links.submenuList}/>
+            <Menu links={props.links.socialList}/>
           </FooterColumns>
           <FooterButtons>
             <Button>Личный кабинет</Button>
@@ -29,7 +26,7 @@ const Footer = () => {
         </FooterTop>
         <FooterBottom>
           <Copyright>&copy;&nbsp;2021 Kadex Enterprise pte Ltd.</Copyright>
-          <FooterPolitics/>
+          <FooterPolitics links={props.links.politicsList}/>
           <FooterToTop>Вернуться наверх</FooterToTop>
         </FooterBottom>
       </FooterContainer>
@@ -140,7 +137,7 @@ const FooterBottom = styled.div`
   }
 `
 
-const FooterPolitics = styled(Politics)`
+const FooterPolitics = styled(Menu)`
   grid-area: politics;
 
   @media (max-width: 1023px) {

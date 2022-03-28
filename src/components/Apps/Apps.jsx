@@ -32,6 +32,7 @@ const AppsLink = styled.a`
   transition: all ${PRIMARY.primaryAnimation};
   transition-property: transform;
 
+  &:focus,
   &:hover {
     transform: translateY(-5px);
   }

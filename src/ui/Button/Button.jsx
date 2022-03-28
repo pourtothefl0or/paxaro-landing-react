@@ -25,12 +25,14 @@ const StyledButton = styled.button`
   transition-property: box-shadow;
   cursor: pointer;
 
+  &:focus,
   &:hover {
     box-shadow: ${PRIMARY.primaryShadow};
   }
 
   // xxl
   ${props => props.xxl && css`
+    border-radius: 16px;
     padding: 21px 24px;
     ${TYPOGRAPHY.subtitle1Bold24}
   `}

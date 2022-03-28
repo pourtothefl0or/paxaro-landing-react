@@ -70,6 +70,7 @@ const FeedbackAlert = styled.p`
     transition: all ${PRIMARY.primaryAnimation};
     transition-property: color;
 
+    &:focus,
     &:hover {
       color: ${COLORS.green};
     }

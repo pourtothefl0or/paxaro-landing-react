@@ -60,6 +60,7 @@ const StyledLanguage = styled.button`
   transition-property: box-shadow;
   cursor: pointer;
 
+  &:focus,
   &:hover {
     box-shadow: ${PRIMARY.primaryShadow};
   }

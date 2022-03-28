@@ -5,14 +5,14 @@ import { MenuButton } from '../MenuButton'
 import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Menu } from '../Menu'
-import { SubMenu } from '../SubMenu'
-import { Social } from '../Social'
 import { Language } from '../Language'
 
 // --- ui ---
 import { Button } from '../../ui'
 
-const Header = () => {
+const Header = ({...props}) => {
+  console.log(props
+    )
   return (
     <StyledHeader>
       <HeaderContainer>
@@ -22,11 +22,11 @@ const Header = () => {
         </HeaderTop>
         <HeaderBottom>
           <HeaderNav>
-            <HeaderMenu/>
+            <HeaderMenu links={props.links.menuList}/>
           </HeaderNav>
           <HeaderSubMenu>
             <HeaderSubMenuContainer>
-              <StyledSubMenu/>
+              <StyledSubMenu links={props.links.submenuList}/>
             </HeaderSubMenuContainer>
           </HeaderSubMenu>
           <HeaderButtons>
@@ -36,7 +36,7 @@ const Header = () => {
               <ButtonLine>Войти</ButtonLine>
             </HeaderButtonsWrapper>
           </HeaderButtons>
-          <HeaderSocial/>
+          <HeaderSocial links={props.links.socialList}/>
           <Language/>
         </HeaderBottom>
       </HeaderContainer>
@@ -74,10 +74,18 @@ const HeaderTop = styled.div`
 `
 
 const HeaderMenu = styled(Menu)`
+  li a {
+    ${TYPOGRAPHY.caption1Semibold18}
+  }
+
   @media (max-width: 1023px) {
     flex-direction: column;
     align-items: baseline;
     row-gap: 18px;
+
+    li a {
+      ${TYPOGRAPHY.subtitle1Bold24}
+    }
   }
 `
 
@@ -152,7 +160,7 @@ const HeaderSubMenuContainer = styled(Container)`
   }
 `
 
-const StyledSubMenu = styled(SubMenu)`
+const StyledSubMenu = styled(Menu)`
   @media (max-width: 1023px) {
     flex-direction: column;
     align-items: baseline;
@@ -194,7 +202,7 @@ const ButtonLine = styled(Button)`
   background: transparent;
 `
 
-const HeaderSocial = styled(Social)`
+const HeaderSocial = styled(Menu)`
   @media (min-width: 1024px) {
     display: none;
   }

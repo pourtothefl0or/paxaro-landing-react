@@ -16,13 +16,28 @@ const Advantages = () => {
         </AdvantagesDescr>
         <AdvantagesCards>
           <AdvantagesCardsItem>
-            <span>Активы</span> <br/> хранятся <br/> на бирже
+            <AdvantageCardsTitle>
+              <span>Активы</span> <br/> хранятся <br/> на бирже
+            </AdvantageCardsTitle>
+            <AdvantageCardsDescr>
+              Ваши деньги не хранятся у нас. Все активы размещены на официальной бирже. Она страхует их и шифрует данные. Взлом этих систем невозможен.
+            </AdvantageCardsDescr>
           </AdvantagesCardsItem>
           <AdvantagesCardsItem white>
-          <span>Алгоритм</span> <br/> минимизирует <br/> риски
+            <AdvantageCardsTitle>
+              <span>Алгоритм</span> <br/> минимизирует <br/> риски
+            </AdvantageCardsTitle>
+            <AdvantageCardsDescr>
+              Риски минимизированы. Наш алгоритм умеет учитывать все изменения курсов и рыночные тренды. Поэтому пакет постоянно диверсифицируется в соответствии с ситуацией на бирже.
+            </AdvantageCardsDescr>
           </AdvantagesCardsItem>
           <AdvantagesCardsItem green>
-            <span>Доходность</span> <br/> зависит <br/> от сроков
+            <AdvantageCardsTitle>
+              <span>Доходность</span> <br/> зависит <br/> от сроков
+            </AdvantageCardsTitle>
+            <AdvantageCardsDescr>
+              Доходность зависит от сроков. Чем дольше инвестиции находятся в обороте, тем лучше  алгоритм с ними работает. Практика показала, что инвестиции в долгую приносят большую прибыль.
+            </AdvantageCardsDescr>
           </AdvantagesCardsItem>
         </AdvantagesCards>
       </AdvantagesContainer>
@@ -67,7 +82,6 @@ const AdvantagesCardsItem = styled.li`
   // default: black
   border-radius: ${PRIMARY.primaryRadius};
   padding: 40px 40px 200px;
-  ${TYPOGRAPHY.title3Bold36}
   color: ${COLORS.white};
   background-color: ${COLORS.black};
 
@@ -112,6 +126,19 @@ const AdvantagesCardsItem = styled.li`
     padding-bottom: 130px;
     ${TYPOGRAPHY.subtitle1Bold24}
   }
+`
+
+const AdvantageCardsTitle = styled.p`
+  margin: 0;
+  ${TYPOGRAPHY.title3Bold36}
+`
+
+const AdvantageCardsDescr = styled.p`
+  display: none;
+  margin: 0;
+  ${TYPOGRAPHY.subtitle2Regular24}
+  opacity: 0;
+  visibility: hidden;
 `
 
 export default Advantages

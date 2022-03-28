@@ -49,6 +49,10 @@ html {
   box-sizing: inherit;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   font-family: "Gilroy", sans-serif;

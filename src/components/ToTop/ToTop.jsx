@@ -28,6 +28,7 @@ const StyledToTop = styled.button`
     transition-property: color;
   }
 
+  &:focus,
   &:hover {
     span {
       color: ${COLORS.green};
