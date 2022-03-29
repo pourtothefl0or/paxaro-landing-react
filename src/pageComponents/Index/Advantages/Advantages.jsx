@@ -74,16 +74,22 @@ const AdvantagesCards = styled.ul`
   gap: 20px;
 
   @media (max-width: 1023px) {
-    --card-width: 250px;
+    --card-width: 300px;
   }
 `
 
 const AdvantagesCardsItem = styled.li`
   // default: black
   border-radius: ${PRIMARY.primaryRadius};
-  padding: 40px 40px 200px;
+  padding: 40px 40px;
+  min-height: 390px;
   color: ${COLORS.white};
   background-color: ${COLORS.black};
+
+  p {
+    transition: all ${PRIMARY.primaryAnimation};
+    transition-property: opacity, visibility;
+  }
 
   span {
     position: relative;
@@ -122,23 +128,59 @@ const AdvantagesCardsItem = styled.li`
     }
   `}
 
+  @media (min-width: 1024px) {
+    &:hover {
+      p:first-child {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      p:last-child {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
   @media (max-width: 1023px) {
-    padding-bottom: 130px;
     ${TYPOGRAPHY.subtitle1Bold24}
+
+    span::after {
+      display: none;
+    }
   }
 `
 
 const AdvantageCardsTitle = styled.p`
   margin: 0;
   ${TYPOGRAPHY.title3Bold36}
+  color: inherit;
+
+  @media (max-width: 1023px) {
+    margin-bottom: 25px;
+    ${TYPOGRAPHY.subtitle1Bold24}
+
+    br {
+      display: none;
+    }
+  }
 `
 
 const AdvantageCardsDescr = styled.p`
-  display: none;
   margin: 0;
   ${TYPOGRAPHY.subtitle2Regular24}
-  opacity: 0;
-  visibility: hidden;
+
+  @media (min-width: 1024px) {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @media (max-width: 1023px) {
+    ${TYPOGRAPHY.body1Regular18}
+  }
 `
 
 export default Advantages

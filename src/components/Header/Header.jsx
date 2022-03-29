@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../constants'
-import { MenuButton } from '../MenuButton'
 import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Menu } from '../Menu'
@@ -11,16 +10,23 @@ import { Language } from '../Language'
 import { Button } from '../../ui'
 
 const Header = ({...props}) => {
-  console.log(props
-    )
+  const [menuActive, setMenuActive] = useState(false)
+
   return (
     <StyledHeader>
       <HeaderContainer>
         <HeaderTop>
           <Logo/>
-          <HeaderMenuButton/>
+          <MenuButton
+            className={!menuActive ? '' : 'is-active'}
+            onClick={() => setMenuActive(!menuActive)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </MenuButton>
         </HeaderTop>
-        <HeaderBottom>
+        <HeaderBottom className={!menuActive ? '' : 'is-open'}>
           <HeaderNav>
             <HeaderMenu links={props.links.menuList}/>
           </HeaderNav>
@@ -89,7 +95,47 @@ const HeaderMenu = styled(Menu)`
   }
 `
 
-const HeaderMenuButton = styled(MenuButton)`
+const MenuButton = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 4px;
+  border: 0;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  transition: all ${PRIMARY.primaryAnimation};
+  transition-property: width, height;
+  cursor: pointer;
+
+  span {
+    display: inline-block;
+    border-radius: 8px;
+    width: 18px;
+    height: 2px;
+    background-color: ${COLORS.white};
+    transition: all ${PRIMARY.primaryAnimation};
+    transition-property: width, opacity, visibility, transform;
+  }
+
+  &.is-active {
+    span {
+      &:nth-of-type(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      &:nth-of-type(2) {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:nth-of-type(3) {
+        transform: translateY(-6px) rotate(135deg);
+      }
+    }
+  }
+
   @media (min-width: 1024px) {
     display: none;
   }
@@ -111,6 +157,7 @@ const HeaderBottom = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
+    z-index: 50;
     display: block;
     padding: 90px ${PRIMARY.primaryIndent} ${PRIMARY.primaryIndent};
     height: 100vh;
@@ -122,7 +169,6 @@ const HeaderBottom = styled.div`
     transition-property: transform, opacity, visibility;
 
     &.is-open {
-      z-index: 50;
       opacity: 1;
       visibility: visible;
       transform: translateY(0%);
@@ -145,7 +191,7 @@ const HeaderSubMenu = styled.div`
     right: 0;
     z-index: 50;
     padding: 11px 0;
-    background-color: ${COLORS.dark};
+    background-color: ${COLORS.darkBlack};
   }
 
   @media (max-width: 1023px) {
@@ -197,7 +243,9 @@ const HeaderButtonsWrapper = styled.div`
 `
 
 const ButtonLine = styled(Button)`
+  border: 2px solid transparent;
   border-color: ${COLORS.green};
+  padding: 9px 16px;
   color: ${COLORS.white};
   background: transparent;
 `

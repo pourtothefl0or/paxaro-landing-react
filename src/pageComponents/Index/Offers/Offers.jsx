@@ -60,7 +60,6 @@ const Offers = () => {
                       <OffersServicesItem key={index}>{service}</OffersServicesItem>
                     )
                   }
-
                 </OffersServices>
               </OffersItem>
             )
@@ -172,18 +171,10 @@ const OffersServicesItem = styled.li`
 
   @media (min-width: 1024px) {
     ${TYPOGRAPHY.subtitle1Bold24}
-
-    /* &:not(:last-child) {
-      margin-bottom: 30px;
-    } */
   }
 
   @media (max-width: 1023px) {
     ${TYPOGRAPHY.caption1Semibold18}
-
-    /* &:not(:last-child) {
-      margin-bottom: 18px;
-    } */
   }
 `
 

@@ -14,13 +14,13 @@ const Button = ({className, children, ...props}) => {
 
 const StyledButton = styled.button`
   display: inline-block;
-  border: 2px solid transparent;
+  border: 0;
   border-radius: ${PRIMARY.primaryRadius};
-  padding: 9px 16px;
+  padding: 11px 18px;
   ${TYPOGRAPHY.caption2Semibold14}
   text-align: center;
   color: ${COLORS.white};
-  background: ${COLORS.gradient};
+  background: ${COLORS.greenGradient};
   transition: all ${PRIMARY.primaryAnimation};
   transition-property: box-shadow;
   cursor: pointer;
@@ -33,12 +33,12 @@ const StyledButton = styled.button`
   // xxl
   ${props => props.xxl && css`
     border-radius: 16px;
-    padding: 21px 24px;
+    padding: 23px 27px;
     ${TYPOGRAPHY.subtitle1Bold24}
   `}
 
   @media (max-width: 1023px) {
-    padding: 12px 26px;
+    padding: 15px 28px;
     ${TYPOGRAPHY.caption2Semibold14}
   }
 `

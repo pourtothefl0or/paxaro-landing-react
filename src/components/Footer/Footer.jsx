@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, TYPOGRAPHY } from '../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 import { Container } from '../Container'
 import { Logo } from '../Logo'
 import { Apps } from '../Apps'
 import { Menu } from '../Menu'
-import { ToTop } from '../ToTop'
 import { Button } from '../../ui'
+import toTop from '../../assets/images/Icons/to-top.svg'
 
 const Footer = ({...props}) => {
   return (
@@ -27,7 +27,10 @@ const Footer = ({...props}) => {
         <FooterBottom>
           <Copyright>&copy;&nbsp;2021 Kadex Enterprise pte Ltd.</Copyright>
           <FooterPolitics links={props.links.politicsList}/>
-          <FooterToTop>Вернуться наверх</FooterToTop>
+          <ToTop>
+            <span>Вернуться наверх</span>
+            <img src={toTop} alt=""/>
+          </ToTop>
         </FooterBottom>
       </FooterContainer>
     </StyledFooter>
@@ -140,6 +143,26 @@ const FooterBottom = styled.div`
 const FooterPolitics = styled(Menu)`
   grid-area: politics;
 
+  @media (min-width: 1024px) {
+    li {
+      &:not(:last-child) {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: -15px;
+          display: inline-block;
+          width: 1px;
+          height: 20px;
+          background-color: ${COLORS.white};
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
   @media (max-width: 1023px) {
     flex-direction: column;
     align-items: baseline;
@@ -158,9 +181,36 @@ const Copyright = styled.p`
   }
 `
 
-const FooterToTop = styled(ToTop)`
+const ToTop = styled.button`
   grid-area: top;
   justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  span {
+    ${TYPOGRAPHY.caption2Semibold14}
+    color: ${COLORS.white};
+    transition: all ${PRIMARY.primaryAnimation};
+    transition-property: color;
+  }
+
+  &:focus,
+  &:hover {
+    span {
+      color: ${COLORS.green};
+    }
+  }
+
+  @media (max-width: 1023px) {
+    span {
+      display: none;
+    }
+  }
 `
 
 export default Footer

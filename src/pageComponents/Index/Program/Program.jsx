@@ -58,7 +58,7 @@ const ProgramForm = styled.form`
   column-gap: 200px;
   border-radius: 60px;
   padding: 60px 105px;
-  background-color: ${COLORS.dark};
+  background-color: ${COLORS.darkBlack};
 
   @media (min-width: 1024px) {
     display: grid;

@@ -3,8 +3,12 @@ import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
 import { Input, Button } from '../../../ui'
+import { useForm } from 'react-hook-form';
 
 const Feedback = () => {
+  const {register, handleSubmit} = useForm();
+  const onSubmit = data => console.log(data);
+
   return (
     <StyledFeedback>
       <FeedbackContainer>
@@ -15,12 +19,33 @@ const Feedback = () => {
         <Descr>
           Заполните короткую форму и мы с вами свяжемся.
         </Descr>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <FeedbackFormWrapper>
-            <Input placeholder="Имя*" type="text" />
-            <Input placeholder="Фамилия" type="text" />
-            <Input placeholder="Ваш e-mail*" type="email" />
-            <Input placeholder="Ваш номер" type="tel" />
+            <Input
+              placeholder="Имя*"
+              type="text"
+              {...register('firstName', {
+                required: true
+              })}
+            />
+            <Input
+              placeholder="Фамилия"
+              type="text"
+              {...register('lastName')}
+            />
+            <Input
+              placeholder="Ваш e-mail*"
+              type="email"
+              {...register('email', {
+                required: true,
+                pattern: /^\S+@\S+$/i
+              })}
+            />
+            <Input
+              placeholder="Ваш номер"
+              type="tel"
+              {...register('tel')}
+            />
             <FeedbackAlert>
               Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
             </FeedbackAlert>

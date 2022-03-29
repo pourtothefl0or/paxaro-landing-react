@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TYPOGRAPHY, COLORS } from '../../constants'
+import { TYPOGRAPHY, COLORS, PRIMARY } from '../../constants'
 
 const Radio = ({...props}) => {
   return (
     <StyledRadio>
-      <InputRadio type="radio" name={props.name} />
+      <InputRadio type="radio" name={props.name} {...props}/>
       <CustomRadio></CustomRadio>
       <InputText>{props.text}</InputText>
     </StyledRadio>
@@ -29,6 +29,12 @@ const InputRadio = styled.input`
   padding: 0 !important;
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
+
+  &:checked ~ span:nth-of-type(1) {
+    &:after {
+      background-color: ${COLORS.green};
+    }
+  }
 `
 
 const CustomRadio = styled.span`
@@ -50,6 +56,8 @@ const CustomRadio = styled.span`
     height: 24px;
     background-color: #4a4b4b;
     transform: translate(-50%, -50%);
+    transition: all ${PRIMARY.primaryAnimation};
+    transition-property: background-color;
   }
 `
 

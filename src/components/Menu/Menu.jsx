@@ -8,7 +8,7 @@ const Menu = ({className, links}) => {
       {
         links.map(item =>
           <li key={item.id}>
-            <Link>{item.label}</Link>
+            <Link href={item.path}>{item.label}</Link>
           </li>
         )
       }
@@ -32,7 +32,6 @@ const Link = styled.a`
   color: ${COLORS.white};
   transition: all ${PRIMARY.primaryAnimation};
   transition-property: color;
-  cursor: pointer;
 
   &:focus,
   &:hover {

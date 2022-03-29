@@ -1,12 +1,19 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { COLORS, TYPOGRAPHY, SECONDARY } from '../../../constants'
-import { Container, AppsWhite } from '../../../components'
-import logo from '../../../assets/images/App/logo.svg'
+import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../../constants'
+import { Container } from '../../../components'
+import appLogo from '../../../assets/images/App/app-logo.svg'
+import appStoreWhite from '../../../assets/images/Icons/app-store-white.svg'
+import googlePlayWhite from '../../../assets/images/Icons/google-play-white.svg'
 import appPhone from '../../../assets/images/App/app-phone.png'
 import appPhone2x from '../../../assets/images/App/app-phone@2x.png'
 
 const App = () => {
+  const appsList = [
+    { id: 1, image: appStoreWhite, alt: "" },
+    { id: 2, image: googlePlayWhite, alt: "" },
+  ]
+
   return (
     <StyledApp>
       <AppContainer>
@@ -16,11 +23,19 @@ const App = () => {
           </picture>
         </AppCard>
         <AppCard green>
-          <img src={logo} alt=""/>
+          <img src={appLogo} alt=""/>
           <AppCardDesrc>
             Мобильное приложение
           </AppCardDesrc>
-          <AppsWhite/>
+          <AppsIcons>
+            {
+              appsList.map((item) =>
+              <AppsLink href="#" key={item.id}>
+                <img src={item.image} alt={item.alt}/>
+              </AppsLink>
+              )
+            }
+          </AppsIcons>
         </AppCard>
       </AppContainer>
     </StyledApp>
@@ -102,6 +117,21 @@ const AppCardDesrc = styled.p`
   @media (max-width: 1023px) {
     margin: 15px 0 30px;
     ${TYPOGRAPHY.subtitle3Bold18}
+  }
+`
+
+const AppsIcons = styled.div`
+  display: flex;
+  gap: 18px 15px;
+`
+
+const AppsLink = styled.a`
+  transition: all ${PRIMARY.primaryAnimation};
+  transition-property: transform;
+
+  &:focus,
+  &:hover {
+    transform: translateY(-5px);
   }
 `
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
+import Select from 'react-select'
 
 const Language = () => {
   const languageList = [
@@ -38,32 +38,17 @@ const Language = () => {
       id: '6',
       value: 'indonesian',
       abbr: 'Id',
-      label: 'Indonesia</span>',
+      label: 'Indonesia',
     },
   ]
 
   return (
-    <StyledLanguage>Ru</StyledLanguage>
+    <CustomSelect options={languageList} />
   )
 }
 
-const StyledLanguage = styled.button`
-  display: inline-block;
-  border: 2px solid transparent;
-  border-radius: ${PRIMARY.primaryRadius};
-  padding: 9px;
-  ${TYPOGRAPHY.caption2Semibold14}
-  text-align: center;
-  color: ${COLORS.black};
-  background: ${COLORS.white};
-  transition: all ${PRIMARY.primaryAnimation};
-  transition-property: box-shadow;
-  cursor: pointer;
-
-  &:focus,
-  &:hover {
-    box-shadow: ${PRIMARY.primaryShadow};
-  }
+const CustomSelect = styled(Select)`
+  z-index: 100;
 `
 
 export default Language

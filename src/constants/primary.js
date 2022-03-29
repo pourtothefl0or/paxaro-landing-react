@@ -1,4 +1,5 @@
 export const PRIMARY = {
+  primaryWidth: `1240px`,
   primaryIndent: `20px`,
   primaryRadius: `8px`,
   primaryBorder: `1px solid #bbb`,

@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 // --- constants ---
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
-const Input = ({...props}) => {
+const Input = forwardRef(({placeholder, type, name, ...rest}, ref) => {
   return (
     <InputLabel>
-      <InputPlaceholder>{props.placeholder}</InputPlaceholder>
-      <StyledInput type={props.type} />
+      <InputPlaceholder>{placeholder}</InputPlaceholder>
+      <StyledInput type={type} name={name} {...rest} ref={ref}/>
     </InputLabel>
   )
-}
+})
 
 const InputLabel = styled.label`
   position: relative;
@@ -27,11 +27,11 @@ const InputLabel = styled.label`
 
   &.is-error {
     p {
-      color: ${COLORS.error};
+      color: ${COLORS.red};
     }
 
     input {
-      border-color: ${COLORS.error};
+      border-color: ${COLORS.red};
     }
   }
 `
