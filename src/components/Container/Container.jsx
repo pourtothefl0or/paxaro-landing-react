@@ -12,8 +12,8 @@ const Container = ({className, children}) => {
 
 const StyledContainer = styled.div`
   margin: 0 auto;
-  padding: 0 ${PRIMARY.primaryIndent};
-  max-width: calc(${PRIMARY.primaryWidth} + (${PRIMARY.primaryIndent} * 2));
+  padding: 0 ${PRIMARY.primaryHorizontalIndent};
+  max-width: calc(${PRIMARY.primaryWidth} + (${PRIMARY.primaryHorizontalIndent} * 2));
 `
 
 export default Container

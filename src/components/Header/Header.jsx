@@ -1,45 +1,43 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../constants'
-import { Container } from '../Container'
-import { Logo } from '../Logo'
+import { Container, Logo, Language } from '../'
 import { Menu } from '../Menu'
-import { Language } from '../Language'
 
 // --- ui ---
 import { Button } from '../../ui'
 
 const Header = ({...props}) => {
-  const [menuActive, setMenuActive] = useState(false)
+  const [menuVisible, setMenuVisible] = useState(false)
 
   return (
     <StyledHeader>
       <HeaderContainer>
         <HeaderTop>
-          <Logo/>
+          <Logo link='#'/>
           <MenuButton
-            className={!menuActive ? '' : 'is-active'}
-            onClick={() => setMenuActive(!menuActive)}
+            className={!menuVisible ? '' : 'is-active'}
+            onClick={() => setMenuVisible(!menuVisible)}
           >
             <span></span>
             <span></span>
             <span></span>
           </MenuButton>
         </HeaderTop>
-        <HeaderBottom className={!menuActive ? '' : 'is-open'}>
+        <HeaderBottom className={!menuVisible ? '' : 'is-open'}>
           <HeaderNav>
             <HeaderMenu links={props.links.menuList}/>
           </HeaderNav>
           <HeaderSubMenu>
             <HeaderSubMenuContainer>
-              <StyledSubMenu links={props.links.submenuList}/>
+              <Submenu links={props.links.submenuList}/>
             </HeaderSubMenuContainer>
           </HeaderSubMenu>
           <HeaderButtons>
             <HeaderButtonsTitle>Личный кабинет</HeaderButtonsTitle>
             <HeaderButtonsWrapper>
               <Button>Зарегистрироваться</Button>
-              <ButtonLine>Войти</ButtonLine>
+              <Button border>Войти</Button>
             </HeaderButtonsWrapper>
           </HeaderButtons>
           <HeaderSocial links={props.links.socialList}/>
@@ -66,21 +64,21 @@ const HeaderContainer = styled(Container)`
 const HeaderTop = styled.div`
   @media (max-width: 1023px) {
     position: fixed;
-    left: 0;
-    right: 0;
     top: 0;
-    z-index: 100;
+    right: 0;
+    left: 0;
+    z-index: 30;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px ${PRIMARY.primaryIndent};
+    padding: 22px ${PRIMARY.primaryHorizontalIndent};
     width: 100%;
     background-color: ${COLORS.black};
   }
 `
 
 const HeaderMenu = styled(Menu)`
-  li a {
+  .menu__link {
     ${TYPOGRAPHY.caption1Semibold18}
   }
 
@@ -89,7 +87,7 @@ const HeaderMenu = styled(Menu)`
     align-items: baseline;
     row-gap: 18px;
 
-    li a {
+    .menu__link {
       ${TYPOGRAPHY.subtitle1Bold24}
     }
   }
@@ -142,10 +140,10 @@ const MenuButton = styled.button`
 `
 
 const HeaderBottom = styled.div`
-  display: flex;
   width: 100%;
 
   @media (min-width: 1024px) {
+    display: flex;
     align-items: center;
     margin-left: 42px;
   }
@@ -153,13 +151,13 @@ const HeaderBottom = styled.div`
   @media (max-width: 1023px) {
     overflow-y: auto;
     position: fixed;
-    left: 0;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
-    z-index: 50;
+    left: 0;
+    z-index: 20;
     display: block;
-    padding: 90px ${PRIMARY.primaryIndent} ${PRIMARY.primaryIndent};
+    padding: 90px ${PRIMARY.primaryHorizontalIndent} 0;
     height: 100vh;
     background-color: ${COLORS.black};
     opacity: 0;
@@ -187,9 +185,9 @@ const HeaderSubMenu = styled.div`
   @media (min-width: 1024px) {
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
-    z-index: 50;
+    left: 0;
+    z-index: 20;
     padding: 11px 0;
     background-color: ${COLORS.darkBlack};
   }
@@ -206,7 +204,7 @@ const HeaderSubMenuContainer = styled(Container)`
   }
 `
 
-const StyledSubMenu = styled(Menu)`
+const Submenu = styled(Menu)`
   @media (max-width: 1023px) {
     flex-direction: column;
     align-items: baseline;
@@ -215,7 +213,9 @@ const StyledSubMenu = styled(Menu)`
 `
 
 const HeaderButtons = styled.div`
-  margin: 0 8px 0 auto;
+  @media (min-width: 1024px) {
+    margin: 0 8px 0 auto;
+  }
 
   @media (max-width: 1023px) {
     padding: 24px 0;
@@ -240,14 +240,6 @@ const HeaderButtonsWrapper = styled.div`
   @media (max-width: 1023px) {
     flex-wrap: wrap;
   }
-`
-
-const ButtonLine = styled(Button)`
-  border: 2px solid transparent;
-  border-color: ${COLORS.green};
-  padding: 9px 16px;
-  color: ${COLORS.white};
-  background: transparent;
 `
 
 const HeaderSocial = styled(Menu)`

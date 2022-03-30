@@ -5,7 +5,11 @@ import { TYPOGRAPHY, COLORS, PRIMARY } from '../../constants'
 const Radio = ({...props}) => {
   return (
     <StyledRadio>
-      <InputRadio type="radio" name={props.name} {...props}/>
+      <InputRadio
+        type="radio"
+        name={props.name}
+        {...props}
+      />
       <CustomRadio></CustomRadio>
       <InputText>{props.text}</InputText>
     </StyledRadio>

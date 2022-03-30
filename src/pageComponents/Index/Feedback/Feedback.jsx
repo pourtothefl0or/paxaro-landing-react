@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
 import { Input, Button } from '../../../ui'
 import { useForm } from 'react-hook-form';
 
 const Feedback = () => {
-  const {register, handleSubmit} = useForm();
-  const onSubmit = data => console.log(data);
+  const {register, handleSubmit, reset, formState:{errors}} = useForm();
+  const onSubmit = data => {
+    console.log(data)
+    reset()
+  }
 
   return (
     <StyledFeedback>
@@ -27,11 +30,13 @@ const Feedback = () => {
               {...register('firstName', {
                 required: true
               })}
+              labelClassName={errors.firstName && 'is-error'}
             />
             <Input
               placeholder="Фамилия"
               type="text"
               {...register('lastName')}
+              labelClassName={errors.lastName && 'is-error'}
             />
             <Input
               placeholder="Ваш e-mail*"
@@ -40,11 +45,13 @@ const Feedback = () => {
                 required: true,
                 pattern: /^\S+@\S+$/i
               })}
+              labelClassName={errors.email && 'is-error'}
             />
             <Input
               placeholder="Ваш номер"
               type="tel"
-              {...register('tel')}
+              {...register('phoneNumber')}
+              labelClassName={errors.phoneNumber && 'is-error'}
             />
             <FeedbackAlert>
               Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
@@ -55,15 +62,37 @@ const Feedback = () => {
       </FeedbackContainer>
     </StyledFeedback>
   )
+
+  // return (
+  //   <FeedbackSuccess>
+  //     <FeedbackSuccessText>
+  //       Форма успешно отправлена, в&nbsp;ближайшее время с&nbsp;вами свяжутся!
+  //     </FeedbackSuccessText>
+  //   </FeedbackSuccess>
+  // )
 }
+
+const FeedbackSuccess = styled.div`
+  margin: auto;
+  border-radius: ${SECONDARY.secondaryRadius};
+  padding: 70px 90px;
+  max-width: 615px;
+  background-color: ${COLORS.lightCard};
+`
+
+const FeedbackSuccessText = styled.p`
+  margin: 0;
+  ${TYPOGRAPHY.subtitle1Bold24}
+  text-align: center;
+`
 
 const StyledFeedback = styled.section`
   background-color: ${COLORS.white};
 `
 
 const FeedbackContainer = styled(Container)`
-  padding-top: 65px;
-  padding-bottom: 65px;
+  padding-top: ${PRIMARY.primaryVerticalIndent};
+  padding-bottom: calc(${PRIMARY.primaryVerticalIndent} * 2);
 `
 
 const FeedbackFormWrapper = styled.div`

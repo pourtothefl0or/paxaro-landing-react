@@ -3,7 +3,7 @@ import { Range } from 'react-range'
 import styled from 'styled-components';
 import { COLORS, PRIMARY, TYPOGRAPHY } from '../../constants';
 
-const CustomRange = () => {
+const RangeSlider = () => {
   const rangeValues = {
     step: 1,
     min: 2,
@@ -14,15 +14,27 @@ const CustomRange = () => {
   const [values, setValues] = useState(rangeValues.defaultValue)
 
   return (
-    <Range
+    <CustomRange
       step={rangeValues.step} min={rangeValues.min} max={rangeValues.max}
       values={values}
       onChange={(values) => setValues(values)}
-      renderTrack={({props, children}) => (<RangeTrack {...props}>{children}</RangeTrack>)}
-      renderThumb={({props}) => (<RangeThumb {...props} />)}
+      renderTrack={({props, children}) =>
+        (<RangeTrack
+          aria-valuemin={rangeValues.min}
+          aria-valuemax={rangeValues.max}
+          {...props}
+          >
+            {children}
+        </RangeTrack>
+        )}
+      renderThumb={({props}) => (
+        <RangeThumb {...props} />
+      )}
     />
   )
 }
+
+const CustomRange = styled(Range)``
 
 const RangeTrack = styled.div`
   position: relative;
@@ -32,22 +44,20 @@ const RangeTrack = styled.div`
   background-color: #999;
 
   &::before {
-    content: '2';
+    content: attr(aria-valuemin);
     position: absolute;
     top: 50%;
-    left: -25px;
-    z-index: 5;
+    left: -30px;
     ${TYPOGRAPHY.caption1Semibold18}
     color: ${COLORS.white};
     transform: translateY(-50%);
   }
 
   &::after {
-    content: '5';
+    content: attr(aria-valuemax);
     position: absolute;
     top: 50%;
-    right: -25px;
-    z-index: 5;
+    right: -30px;
     ${TYPOGRAPHY.caption1Semibold18}
     color: ${COLORS.white};
     transform: translateY(-50%);
@@ -64,7 +74,7 @@ const RangeThumb = styled.div`
   box-shadow: ${PRIMARY.primaryShadow};
 
   &::after {
-    content: '3';
+    content: attr(aria-valuenow);
     position: absolute;
     top: calc(-100% - 10px);
     left: 50%;
@@ -74,4 +84,4 @@ const RangeThumb = styled.div`
   }
 `
 
-export default CustomRange
+export default RangeSlider

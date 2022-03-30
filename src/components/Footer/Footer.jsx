@@ -13,7 +13,7 @@ const Footer = ({...props}) => {
     <StyledFooter>
       <FooterContainer>
         <FooterTop>
-          <FooterLogo/>
+          <FooterLogo link='#'/>
           <FooterApps/>
           <FooterColumns>
             <Menu links={props.links.menuList}/>

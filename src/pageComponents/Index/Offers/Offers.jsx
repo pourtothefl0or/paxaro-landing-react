@@ -75,8 +75,8 @@ const StyledOffers = styled.section`
 `
 
 const OffersContainer = styled(Container)`
-  padding-top: 65px;
-  padding-bottom: 65px;
+  padding-top: ${PRIMARY.primaryVerticalIndent};
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
 `
 
 const OffersItem = styled.li`
@@ -101,7 +101,7 @@ const OffersItemHeader = styled.div`
     align-items: center;
     grid-template-areas:
       "title title"
-      "price Button";
+      "price button";
     margin-bottom: 24px;
   }
 `
@@ -131,7 +131,7 @@ const OffersItemPrice = styled.p`
 
 const OffersButton = styled(Button)`
   @media (max-width: 1023px) {
-    grid-area: Button;
+    grid-area: button;
     justify-self: end;
   }
 `

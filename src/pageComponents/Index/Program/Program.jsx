@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, TYPOGRAPHY } from '../../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
-import { Radio, CustomRange } from '../../../ui'
+import { Radio, RangeSlider } from '../../../ui'
 
 const Program = () => {
+  const programValues = {
+    yourBonus: 876,
+    scoreBonus: 16.4562
+  }
+
   return (
     <StyledProgram>
       <ProgramContainer>
@@ -26,17 +31,17 @@ const Program = () => {
           <ProgramFriends>
             <FormTitle>Количество друзей</FormTitle>
             <FormRow>
-              <CustomRange/>
+              <RangeSlider/>
             </FormRow>
           </ProgramFriends>
           <ProgramBonus>
             <ProgramBonusTitle>
               Ваш бонус
-              <ProgramBonusScore>$876</ProgramBonusScore>
+              <ProgramBonusScore>{`$${programValues.yourBonus}`}</ProgramBonusScore>
             </ProgramBonusTitle>
             <ProgramBonusTitle>
               Общий бонус
-              <ProgramBonusScore>$16,4562</ProgramBonusScore>
+              <ProgramBonusScore>{`$${programValues.scoreBonus}`}</ProgramBonusScore>
             </ProgramBonusTitle>
           </ProgramBonus>
         </ProgramForm>
@@ -50,8 +55,8 @@ const StyledProgram = styled.section`
 `
 
 const ProgramContainer = styled(Container)`
-  padding-top: 65px;
-  padding-bottom: 65px;
+  padding-top: ${PRIMARY.primaryVerticalIndent};
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
 `
 
 const ProgramForm = styled.form`
@@ -105,7 +110,7 @@ const FormTitle = styled.h3`
   color: ${COLORS.white};
 
   @media (max-width: 1023px) {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     ${TYPOGRAPHY.subtitle3Bold18}
   }
 `

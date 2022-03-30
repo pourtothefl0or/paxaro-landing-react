@@ -27,7 +27,9 @@ const StyledMenu = styled.ul`
   }
 `
 
-const Link = styled.a`
+const Link = styled.a.attrs({
+  className: 'menu__link'
+})`
   ${TYPOGRAPHY.caption2Semibold14}
   color: ${COLORS.white};
   transition: all ${PRIMARY.primaryAnimation};

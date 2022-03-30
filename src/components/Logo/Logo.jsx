@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import logoDesktop from '../../assets/images/Logo/logo-desktop.svg'
 import logoMobile from '../../assets/images/Logo/logo-mobile.svg'
 
-const Logo = ({className}) => {
+const Logo = ({className, link}) => {
   return (
-    <StyledLogo className={className} href="#">
+    <StyledLogo className={className} href={link}>
       <picture>
         <source srcSet={logoMobile} media="(max-width: 1023px)"/>
         <img src={logoDesktop} alt="Paxaro logo"/>
@@ -16,10 +16,6 @@ const Logo = ({className}) => {
 
 const StyledLogo = styled.a`
   display: inline-block;
-
-  @media (max-width: 1023px) {
-    max-width: 31px;
-  }
 `
 
 export default Logo

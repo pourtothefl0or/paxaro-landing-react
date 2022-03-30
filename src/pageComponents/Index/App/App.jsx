@@ -53,7 +53,7 @@ const AppContainer = styled(Container)`
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
   gap: 20px;
   padding-top: 20px;
-  padding-bottom: 65px;
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
 
   @media (max-width: 1023px) {
     --grid-min: 300px;

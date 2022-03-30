@@ -1,7 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-
-// --- constants ---
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
 const Button = ({className, children, ...props}) => {
@@ -14,9 +12,9 @@ const Button = ({className, children, ...props}) => {
 
 const StyledButton = styled.button`
   display: inline-block;
-  border: 0;
+  border: 2px solid transparent;
   border-radius: ${PRIMARY.primaryRadius};
-  padding: 11px 18px;
+  padding: 9px 16px;
   ${TYPOGRAPHY.caption2Semibold14}
   text-align: center;
   color: ${COLORS.white};
@@ -25,21 +23,31 @@ const StyledButton = styled.button`
   transition-property: box-shadow;
   cursor: pointer;
 
+  // xxl
+  ${props => props.xxl && css`
+    @media (min-width: 1024px) {
+      border-radius: 16px;
+      padding: 21px 25px;
+      ${TYPOGRAPHY.subtitle1Bold24}
+    }
+
+    @media (max-width: 1023px) {
+      padding: 12px 26px;
+    }
+  `}
+
+  // border
+  ${props => props.border && css`
+    border: 2px solid transparent;
+    border-color: ${COLORS.green};
+    padding: 9px 16px;
+    color: ${COLORS.white};
+    background: transparent;
+  `}
+
   &:focus,
   &:hover {
     box-shadow: ${PRIMARY.primaryShadow};
-  }
-
-  // xxl
-  ${props => props.xxl && css`
-    border-radius: 16px;
-    padding: 23px 27px;
-    ${TYPOGRAPHY.subtitle1Bold24}
-  `}
-
-  @media (max-width: 1023px) {
-    padding: 15px 28px;
-    ${TYPOGRAPHY.caption2Semibold14}
   }
 `
 
