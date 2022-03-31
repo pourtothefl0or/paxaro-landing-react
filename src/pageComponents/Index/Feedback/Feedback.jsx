@@ -6,7 +6,8 @@ import { Input, Button } from '../../../ui'
 import { useForm } from 'react-hook-form';
 
 const Feedback = () => {
-  const {register, handleSubmit, reset, formState:{errors}} = useForm();
+  const {register, handleSubmit, reset, formState:{errors, isSubmitSuccessful}} = useForm();
+
   const onSubmit = data => {
     console.log(data)
     reset()
@@ -22,69 +23,57 @@ const Feedback = () => {
         <Descr>
           Заполните короткую форму и мы с вами свяжемся.
         </Descr>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FeedbackFormWrapper>
-            <Input
-              placeholder="Имя*"
-              type="text"
-              {...register('firstName', {
-                required: true
-              })}
-              labelClassName={errors.firstName && 'is-error'}
-            />
-            <Input
-              placeholder="Фамилия"
-              type="text"
-              {...register('lastName')}
-              labelClassName={errors.lastName && 'is-error'}
-            />
-            <Input
-              placeholder="Ваш e-mail*"
-              type="email"
-              {...register('email', {
-                required: true,
-                pattern: /^\S+@\S+$/i
-              })}
-              labelClassName={errors.email && 'is-error'}
-            />
-            <Input
-              placeholder="Ваш номер"
-              type="tel"
-              {...register('phoneNumber')}
-              labelClassName={errors.phoneNumber && 'is-error'}
-            />
-            <FeedbackAlert>
-              Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
-            </FeedbackAlert>
-            <FeedbackButton xxl>Отправить форму</FeedbackButton>
-          </FeedbackFormWrapper>
-        </form>
+        {
+          !isSubmitSuccessful
+          ?
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FeedbackFormWrapper>
+              <Input
+                placeholder="Имя*"
+                type="text"
+                {...register('firstName', {
+                  required: true
+                })}
+                labelClassName={errors.firstName && 'is-error'}
+              />
+              <Input
+                placeholder="Фамилия"
+                type="text"
+                {...register('lastName')}
+                labelClassName={errors.lastName && 'is-error'}
+              />
+              <Input
+                placeholder="Ваш e-mail*"
+                type="email"
+                {...register('email', {
+                  required: true,
+                  pattern: /^\S+@\S+$/i
+                })}
+                labelClassName={errors.email && 'is-error'}
+              />
+              <Input
+                placeholder="Ваш номер"
+                type="tel"
+                {...register('phoneNumber')}
+                labelClassName={errors.phoneNumber && 'is-error'}
+              />
+              <FeedbackAlert>
+                Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>
+              </FeedbackAlert>
+              <FeedbackButton xxl>Отправить форму</FeedbackButton>
+            </FeedbackFormWrapper>
+          </form>
+          :
+          <FeedbackSuccess>
+            <FeedbackSuccessText>
+              Форма <span>успешно</span> отправлена, в&nbsp;ближайшее время с&nbsp;вами свяжутся!
+            </FeedbackSuccessText>
+          </FeedbackSuccess>
+        }
       </FeedbackContainer>
     </StyledFeedback>
   )
-
-  // return (
-  //   <FeedbackSuccess>
-  //     <FeedbackSuccessText>
-  //       Форма успешно отправлена, в&nbsp;ближайшее время с&nbsp;вами свяжутся!
-  //     </FeedbackSuccessText>
-  //   </FeedbackSuccess>
-  // )
 }
-
-const FeedbackSuccess = styled.div`
-  margin: auto;
-  border-radius: ${SECONDARY.secondaryRadius};
-  padding: 70px 90px;
-  max-width: 615px;
-  background-color: ${COLORS.lightCard};
-`
-
-const FeedbackSuccessText = styled.p`
-  margin: 0;
-  ${TYPOGRAPHY.subtitle1Bold24}
-  text-align: center;
-`
 
 const StyledFeedback = styled.section`
   background-color: ${COLORS.white};
@@ -133,6 +122,49 @@ const FeedbackAlert = styled.p`
 
 const FeedbackButton = styled(Button)`
   justify-self: end;
+`
+
+const FeedbackSuccess = styled.div`
+  margin: auto;
+  border-radius: ${SECONDARY.secondaryRadius};
+  padding: 70px 90px;
+  max-width: 615px;
+  background-color: ${COLORS.lightCard};
+  animation: box ${PRIMARY.primaryAnimation};
+
+  @keyframes box {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+`
+
+const FeedbackSuccessText = styled.p`
+  margin: 0;
+  ${TYPOGRAPHY.subtitle1Bold24}
+  text-align: center;
+
+  span {
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2.5px;
+      z-index: -1;
+      display: inline-block;
+      width: calc(100% + 5px);
+      height: 100%;
+      background-color: ${COLORS.green};
+    }
+  }
 `
 
 export default Feedback
