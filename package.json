@@ -36,9 +36,8 @@
     ]
   },
   "devDependencies": {
+    "rc-slider": "^10.0.0-alpha.6",
     "react-hook-form": "^7.28.1",
-    "react-range": "^1.8.12",
-    "react-select": "^5.2.2",
     "style-components": "^0.1.0",
     "styled-components": "^5.3.3"
   }

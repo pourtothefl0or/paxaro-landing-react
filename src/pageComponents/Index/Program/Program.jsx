@@ -24,24 +24,22 @@ const Program = () => {
           <ProgramPlan>
             <FormTitle>Ваш план подписки</FormTitle>
             <FormRow>
-              <Radio text="Prime" name="plan"/>
-              <Radio text="Advanced" name="plan"/>
+              <Radio text="Prime" name="plan" value="prime" checked/>
+              <Radio text="Advanced" name="plan" value="advanced"/>
             </FormRow>
           </ProgramPlan>
           <ProgramFriends>
             <FormTitle>Количество друзей</FormTitle>
-            <FormRow>
               <RangeSlider/>
-            </FormRow>
           </ProgramFriends>
           <ProgramBonus>
             <ProgramBonusTitle>
               Ваш бонус
-              <ProgramBonusScore>{`$${programValues.yourBonus}`}</ProgramBonusScore>
+              <ProgramBonusScore>${programValues.yourBonus}</ProgramBonusScore>
             </ProgramBonusTitle>
             <ProgramBonusTitle>
               Общий бонус
-              <ProgramBonusScore>{`$${programValues.scoreBonus}`}</ProgramBonusScore>
+              <ProgramBonusScore>${programValues.scoreBonus}</ProgramBonusScore>
             </ProgramBonusTitle>
           </ProgramBonus>
         </ProgramForm>
@@ -71,6 +69,7 @@ const ProgramForm = styled.form`
     grid-template-areas:
       "plan friends"
       "bonus bonus";
+    row-gap: 50px;
   }
 
   @media (max-width: 1023px) {
@@ -94,7 +93,6 @@ const ProgramBonus = styled.div`
   display: flex;
   align-items: center;
   column-gap: 110px;
-  margin-top: 50px;
 
   @media (max-width: 1023px) {
     flex-direction: column;
