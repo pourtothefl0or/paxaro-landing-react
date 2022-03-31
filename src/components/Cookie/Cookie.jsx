@@ -5,17 +5,24 @@ import { Container } from '../Container'
 import { Button } from '../../ui'
 
 const Cookie = () => {
-  const [cookieVisible, setCookieVisible] = useState(true)
+  const [popupVisibility, setPopupVisibility] = useState(true)
+  const cookiePopupValue = 'cookiePopup=true'
+
+  const changePopupState = () => {
+    setPopupVisibility(!popupVisibility)
+    setTimeout(() => document.cookie = cookiePopupValue, 300)
+  }
 
   return (
-    <StyledCookie className={cookieVisible ? '' : 'is-hidden'}>
-      <CookieContainer>
-        <CookieText>
-          Cайт Paxaro.com использует файлы cookie и другие технологии для вашего удобства пользования сайтом, анализа использования наших товаров и услуг и повышения качества рекомендаций. <a href="#">Подробнее</a>
-        </CookieText>
-        <Button onClick={() => setCookieVisible(!cookieVisible)}>Хорошо</Button>
-      </CookieContainer>
-    </StyledCookie>
+    document.cookie.search(cookiePopupValue) < 0 &&
+      <StyledCookie className={popupVisibility ? '' : 'is-hidden'}>
+        <CookieContainer>
+          <CookieText>
+            Cайт Paxaro.com использует файлы cookie и другие технологии для вашего удобства пользования сайтом, анализа использования наших товаров и услуг и повышения качества рекомендаций. <a href="#">Подробнее</a>
+          </CookieText>
+          <Button onClick={() => changePopupState()}>Хорошо</Button>
+        </CookieContainer>
+      </StyledCookie>
   )
 }
 
