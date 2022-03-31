@@ -6,8 +6,6 @@
 
 .rc-slider-track {
   background-color: #31b38d;
-  transition: all 0.3s ease-in-out;
-  transition-property: width;
 }
 
 .rc-slider-step {
@@ -22,8 +20,6 @@
   background-color: #31b38d;
   opacity: 1;
   box-shadow: 0 0 20px 0 #31b38d !important;
-  transition: all 0.3s ease-in-out;
-  transition-property: left;
 }
 
 .rc-slider-handle::before {

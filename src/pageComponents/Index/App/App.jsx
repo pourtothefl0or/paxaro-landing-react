@@ -10,8 +10,8 @@ import appPhone2x from '../../../assets/images/App/app-phone@2x.png'
 
 const App = () => {
   const appsList = [
-    { id: 1, image: appStoreWhite, alt: "" },
-    { id: 2, image: googlePlayWhite, alt: "" },
+    { id: 1, image: appStoreWhite, alt: 'App Store' },
+    { id: 2, image: googlePlayWhite, alt: 'Google Play' },
   ]
 
   return (
@@ -19,11 +19,11 @@ const App = () => {
       <AppContainer>
         <AppCard shadow>
           <picture>
-            <AppCardImage src={appPhone} srcSet={`${appPhone2x} 2x`} alt=""/>
+            <AppCardImage src={appPhone} srcSet={`${appPhone2x} 2x`} alt="Phone image"/>
           </picture>
         </AppCard>
         <AppCard green>
-          <img src={appLogo} alt=""/>
+          <AppCardLogo src={appLogo} alt="Paxaro logo"/>
           <AppCardDesrc>
             Мобильное приложение
           </AppCardDesrc>
@@ -57,6 +57,8 @@ const AppContainer = styled(Container)`
 
   @media (max-width: 1023px) {
     --grid-min: 300px;
+
+    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};;
   }
 `
 
@@ -120,8 +122,16 @@ const AppCardDesrc = styled.p`
   }
 `
 
+const AppCardLogo = styled.img`
+  @media (max-width: 1023px) {
+    max-width: 195px;
+  }
+`
+
 const AppsIcons = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px 15px;
 `
 

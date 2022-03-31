@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import './rangeSlider.css'
+import './range.css'
 import { COLORS, TYPOGRAPHY } from '../../constants'
 
-const RangeSlider = () => {
+const Range = ({childValue}) => {
   const rangeValues = {
     min: 2,
     max: 5,
@@ -21,6 +21,7 @@ const RangeSlider = () => {
         max={rangeValues.max}
         defaultValue={rangeValues.defaultValue}
         step={rangeValues.step}
+        onChange={(value) => childValue(value)}
       />
       <SliderPoint>{rangeValues.max}</SliderPoint>
     </StyledSlider>
@@ -40,4 +41,4 @@ const SliderPoint = styled.p`
   color: ${COLORS.white};
 `
 
-export default RangeSlider
+export default Range

@@ -56,8 +56,13 @@ const StyledAdvantages = styled.section`
 `
 
 const AdvantagesContainer = styled(Container)`
-  padding-top: calc(${PRIMARY.primaryVerticalIndent} * 2);
+  padding-top: ${PRIMARY.primaryVerticalIndent};
   padding-bottom: ${PRIMARY.primaryVerticalIndent};
+
+  @media (max-width: 1023px) {
+    padding-top: ${PRIMARY.primaryVerticalIndentSmall};
+    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};
+  }
 `
 
 const AdvantagesDescr = styled.p`
@@ -184,6 +189,7 @@ const AdvantagesCard = styled.div.attrs({
 const AdvantageCardTitle = styled.p.attrs({
   className: 'advantages-card__title'
 })`
+  display: inline-block;
   margin: 0;
   ${TYPOGRAPHY.title3Bold36}
   color: inherit;

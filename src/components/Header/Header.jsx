@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../constants'
 import { Container, Logo, Language } from '../'
 import { Menu } from '../Menu'
-
-// --- ui ---
-import { Button } from '../../ui'
+import { Link } from '../../ui'
 
 const Header = ({...props}) => {
   const [menuVisible, setMenuVisible] = useState(false)
+
+  useEffect(() => {
+    const body = document.querySelector('body').classList
+
+    menuVisible ? body.add('scroll-disabled') : body.remove('scroll-disabled')
+  })
 
   return (
     <StyledHeader>
@@ -36,8 +40,8 @@ const Header = ({...props}) => {
           <HeaderButtons>
             <HeaderButtonsTitle>Личный кабинет</HeaderButtonsTitle>
             <HeaderButtonsWrapper>
-              <Button>Зарегистрироваться</Button>
-              <Button border>Войти</Button>
+              <Link link="#">Зарегистрироваться</Link>
+              <Link link="#" border>Войти</Link>
             </HeaderButtonsWrapper>
           </HeaderButtons>
           <HeaderSocial links={props.links.socialList}/>

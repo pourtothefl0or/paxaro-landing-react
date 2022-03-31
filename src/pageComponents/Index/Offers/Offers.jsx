@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title } from '../../../components'
-import { Button } from '../../../ui'
+import { Link } from '../../../ui'
 import offerItemCircle from '../../../assets/images/Offers/offer-item-circle.svg'
 
 const Offers = () => {
@@ -52,7 +52,7 @@ const Offers = () => {
                 <OffersItemHeader>
                   <OffersItemTitle>{item.name}</OffersItemTitle>
                   <OffersItemPrice>{item.price}</OffersItemPrice>
-                  <OffersButton xxl>Купить</OffersButton>
+                  <OffersButton link="#" xxl>Купить</OffersButton>
                 </OffersItemHeader>
                 <OffersServices>
                   {
@@ -77,6 +77,11 @@ const StyledOffers = styled.section`
 const OffersContainer = styled(Container)`
   padding-top: ${PRIMARY.primaryVerticalIndent};
   padding-bottom: ${PRIMARY.primaryVerticalIndent};
+
+  @media (max-width: 1023px) {
+    padding-top: ${PRIMARY.primaryVerticalIndentSmall};
+    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};
+  }
 `
 
 const OffersItem = styled.li`
@@ -129,7 +134,7 @@ const OffersItemPrice = styled.p`
   }
 `
 
-const OffersButton = styled(Button)`
+const OffersButton = styled(Link)`
   @media (max-width: 1023px) {
     grid-area: button;
     justify-self: end;

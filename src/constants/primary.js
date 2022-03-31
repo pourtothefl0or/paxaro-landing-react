@@ -2,6 +2,7 @@ export const PRIMARY = {
   primaryWidth: `1240px`,
   primaryHorizontalIndent: `20px`,
   primaryVerticalIndent: `65px`,
+  primaryVerticalIndentSmall: `25px`,
   primaryRadius: `8px`,
   primaryBorder: `1px solid #bbb`,
   primaryAnimation: `0.3s ease-in-out`,

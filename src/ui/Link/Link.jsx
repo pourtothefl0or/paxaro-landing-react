@@ -2,15 +2,15 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
-const Button = ({className, children, ...props}) => {
+const Link = ({className, href, children, ...props}) => {
   return (
-    <StyledButton className={className} {...props}>
+    <StyledLink className={className} href={href} {...props}>
       {children}
-    </StyledButton>
+    </StyledLink>
   )
 }
 
-const StyledButton = styled.button`
+const StyledLink = styled.a`
   display: inline-block;
   border: 0;
   border-radius: ${PRIMARY.primaryRadius};
@@ -56,4 +56,4 @@ const StyledButton = styled.button`
   }
 `
 
-export default Button
+export default Link

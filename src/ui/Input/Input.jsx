@@ -1,7 +1,5 @@
 import React, { useState, forwardRef } from 'react'
 import styled from 'styled-components'
-
-// --- constants ---
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 
 const Input = forwardRef(({placeholder, type, name, labelClassName, className, ...rest}, ref) => {

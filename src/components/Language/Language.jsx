@@ -61,17 +61,23 @@ const Language = () => {
   //   if (innerWidth > 120)
   // }
 
+  const item = languageList[0]
+
   return (
     // onClick={}
     <CustomSelect>
-      <SelectButton onClick={() => setMenuVisible(!menuVisible)}>Ru</SelectButton>
+      {/* <SelectOption onClick={() => setMenuVisible(!menuVisible)}>
+        <SelectOptionImage src={item.image} alt={item.label}/>
+        <SelectOptionText>{item.label}</SelectOptionText>
+      </SelectOption> */}
+      <SelectButton onClick={() => setMenuVisible(!menuVisible)}>{item.abbr}</SelectButton>
       <SelectListInner className={!menuVisible ? '' : 'is-open'}>
         <SelectList>
           {
             languageList.map(el =>
               <SelectOption key={el.id}>
                 <SelectOptionImage src={el.image} alt={el.label}/>
-                {el.label}
+                <SelectOptionText>{el.label}</SelectOptionText>
               </SelectOption>
             )
           }
@@ -83,6 +89,11 @@ const Language = () => {
 
 const CustomSelect = styled.div`
   position: relative;
+
+  @media (max-width: 1023px) {
+    margin-left: -${PRIMARY.primaryHorizontalIndent};
+    margin-right: -${PRIMARY.primaryHorizontalIndent};
+  }
 `
 
 const SelectButton = styled.button`
@@ -129,9 +140,6 @@ const SelectListInner = styled.div`
 `
 
 const SelectList = styled.div`
-  width: 100%;
-  ${TYPOGRAPHY.caption2Semibold14}
-
   @media (min-width: 1024px) {
     border-radius: ${PRIMARY.primaryRadius};
     background-color: ${COLORS.white};
@@ -193,11 +201,18 @@ const SelectOption = styled.div`
   }
 `
 
+const SelectOptionText = styled.p`
+  margin: 0;
+  width: 100%;
+  ${TYPOGRAPHY.caption2Semibold14}
+`
+
 const SelectOptionImage = styled.img`
   --size: 14px;
 
   display: inline-block;
   border-radius: 100%;
+  max-width: none;
   width: var(--size);
   height: var(--size);
 

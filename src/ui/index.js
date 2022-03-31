@@ -1,4 +1,5 @@
 export { Button } from './Button'
+export { Link } from './Link'
 export { Input } from './Input'
 export { Radio } from './Radio'
-export { RangeSlider } from './RangeSlider'
+export { Range } from './Range'

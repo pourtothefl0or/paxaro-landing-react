@@ -37,12 +37,6 @@ const Feedback = () => {
                 labelClassName={errors.firstName && 'is-error'}
               />
               <Input
-                placeholder="Фамилия"
-                type="text"
-                {...register('lastName')}
-                labelClassName={errors.lastName && 'is-error'}
-              />
-              <Input
                 placeholder="Ваш e-mail*"
                 type="email"
                 {...register('email', {
@@ -50,6 +44,12 @@ const Feedback = () => {
                   pattern: /^\S+@\S+$/i
                 })}
                 labelClassName={errors.email && 'is-error'}
+              />
+              <Input
+                placeholder="Фамилия"
+                type="text"
+                {...register('lastName')}
+                labelClassName={errors.lastName && 'is-error'}
               />
               <Input
                 placeholder="Ваш номер"
@@ -82,6 +82,10 @@ const StyledFeedback = styled.section`
 const FeedbackContainer = styled(Container)`
   padding-top: ${PRIMARY.primaryVerticalIndent};
   padding-bottom: calc(${PRIMARY.primaryVerticalIndent} * 2);
+
+  @media (max-width: 1023px) {
+    padding-top: ${PRIMARY.primaryVerticalIndentSmall};
+  }
 `
 
 const FeedbackFormWrapper = styled.div`

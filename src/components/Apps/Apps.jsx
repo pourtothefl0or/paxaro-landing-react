@@ -6,8 +6,8 @@ import googlePlay from '../../assets/images/Icons/google-play.svg'
 
 const Apps = ({className}) => {
   const appsList = [
-    { id: 1, image: appStore, alt: "" },
-    { id: 2, image: googlePlay, alt: "" },
+    { id: 1, image: appStore, alt: 'App Store' },
+    { id: 2, image: googlePlay, alt: 'Google Play' },
   ]
 
   return (

@@ -1,21 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { TYPOGRAPHY, COLORS, PRIMARY } from '../../constants'
 
-const Radio = ({...props}) => {
-  const [value, setValue] = useState(props.checked && props.value);
-
+const Radio = ({label, name, value, ...props}) => {
   return (
     <StyledRadio>
       <InputRadio
         type="radio"
-        name={props.name}
-        value={props.value}
-        checked={value == props.value ? true : false}
-        onChange={e => setValue(e.target.value)}
+        name={name}
+        value={value}
+        {...props}
       />
       <CustomRadio></CustomRadio>
-      <InputText>{props.text}</InputText>
+      <InputText>{label}</InputText>
     </StyledRadio>
   )
 }

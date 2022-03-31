@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
-import { Container } from '../Container'
-import { Logo } from '../Logo'
+import { Container, Logo, Menu } from '../'
 import { Apps } from '../Apps'
-import { Menu } from '../Menu'
-import { Button } from '../../ui'
+import { Link } from '../../ui'
 import toTop from '../../assets/images/Icons/to-top.svg'
 
 const Footer = ({...props}) => {
+  const setScrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
   return (
     <StyledFooter>
       <FooterContainer>
@@ -21,15 +21,15 @@ const Footer = ({...props}) => {
             <Menu links={props.links.socialList}/>
           </FooterColumns>
           <FooterButtons>
-            <Button>Личный кабинет</Button>
+            <Link link="#">Личный кабинет</Link>
           </FooterButtons>
         </FooterTop>
         <FooterBottom>
           <Copyright>&copy;&nbsp;2021 Kadex Enterprise pte Ltd.</Copyright>
           <FooterPolitics links={props.links.politicsList}/>
-          <ToTop>
+          <ToTop onClick={() => setScrollTop()}>
             <span>Вернуться наверх</span>
-            <img src={toTop} alt=""/>
+            <img src={toTop} alt="" aria-hidden="true" />
           </ToTop>
         </FooterBottom>
       </FooterContainer>

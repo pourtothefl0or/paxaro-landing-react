@@ -1,13 +1,45 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import styled, { css } from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
-import { Radio, RangeSlider } from '../../../ui'
+import { Radio, Range } from '../../../ui'
 
 const Program = () => {
-  const programValues = {
-    yourBonus: 876,
-    scoreBonus: 16.4562
+  const radioList = [
+    {
+      id: 1,
+      name: 'yourPlan',
+      value: 'prime',
+      label: 'Prime'
+    },
+    {
+      id: 2,
+      name: 'yourPlan',
+      value: 'advanced',
+      label: 'Advanced'
+    },
+  ]
+
+  const radioDefaultValue = radioList[0].value
+  const [radioValue, setRadioValue] = useState(radioDefaultValue)
+
+  const getChildValue = el => console.log(el)
+  // const [rangeValue, setRangeValue] = useState(3)
+
+  const calcYourBonus = () => {
+    let point = 240
+    let friends = 3
+
+    return point * friends
+  }
+
+  const calcSumBonus = () => {
+    let bonus = calcYourBonus()
+    let point = 290
+    let friends = 3
+    let coefficient = radioValue === radioDefaultValue ? 2 : 4
+
+    return bonus + friends * (coefficient * point)
   }
 
   return (
@@ -24,22 +56,32 @@ const Program = () => {
           <ProgramPlan>
             <FormTitle>Ваш план подписки</FormTitle>
             <FormRow>
-              <Radio text="Prime" name="plan" value="prime" checked/>
-              <Radio text="Advanced" name="plan" value="advanced"/>
+              {
+                radioList.map((item) =>
+                  <Radio
+                    name={item.name}
+                    value={item.value}
+                    label={item.label}
+                    key={item.id}
+                    checked={radioValue === item.value ? true : false}
+                    onChange={() => setRadioValue(item.value)}
+                  />
+                )
+              }
             </FormRow>
           </ProgramPlan>
           <ProgramFriends>
             <FormTitle>Количество друзей</FormTitle>
-              <RangeSlider/>
+              <Range childValue={getChildValue}/>
           </ProgramFriends>
           <ProgramBonus>
             <ProgramBonusTitle>
               Ваш бонус
-              <ProgramBonusScore>${programValues.yourBonus}</ProgramBonusScore>
+              <ProgramBonusScore green>${calcYourBonus()}</ProgramBonusScore>
             </ProgramBonusTitle>
             <ProgramBonusTitle>
               Общий бонус
-              <ProgramBonusScore>${programValues.scoreBonus}</ProgramBonusScore>
+              <ProgramBonusScore>${calcSumBonus()}</ProgramBonusScore>
             </ProgramBonusTitle>
           </ProgramBonus>
         </ProgramForm>
@@ -54,11 +96,13 @@ const StyledProgram = styled.section`
 
 const ProgramContainer = styled(Container)`
   padding-top: ${PRIMARY.primaryVerticalIndent};
-  padding-bottom: ${PRIMARY.primaryVerticalIndent};
+
+  @media (max-width: 1023px) {
+    padding-top: ${PRIMARY.primaryVerticalIndentSmall};
+  }
 `
 
 const ProgramForm = styled.form`
-  column-gap: 200px;
   border-radius: 60px;
   padding: 60px 105px;
   background-color: ${COLORS.darkBlack};
@@ -69,7 +113,7 @@ const ProgramForm = styled.form`
     grid-template-areas:
       "plan friends"
       "bonus bonus";
-    row-gap: 50px;
+    gap: 50px 200px;
   }
 
   @media (max-width: 1023px) {
@@ -81,11 +125,15 @@ const ProgramForm = styled.form`
 `
 
 const ProgramPlan = styled.div`
-  grid-area: plan;
+  @media (min-width: 1024px) {
+    grid-area: plan;
+  }
 `
 
 const ProgramFriends = styled.div`
-  grid-area: friends;
+  @media (min-width: 1024px) {
+    grid-area: friends;
+  }
 `
 
 const ProgramBonus = styled.div`
@@ -140,6 +188,11 @@ const ProgramBonusScore = styled.span`
   padding-left: 30px;
   ${TYPOGRAPHY.title2Bold40}
   color: ${COLORS.white};
+
+  // green
+  ${props => props.green && css`
+    color: ${COLORS.green}
+  `}
 
   @media (max-width: 1023px) {
     margin-left: auto;

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS, TYPOGRAPHY } from '../../../constants'
+import { COLORS, TYPOGRAPHY, PRIMARY } from '../../../constants'
 import { Container } from '../../../components'
-import { Button } from '../../../ui'
+import { Link } from '../../../ui'
 import heroImage from '../../../assets/images/Hero/hero-image.png'
 import heroImage2x from '../../../assets/images/Hero/hero-image@2x.png'
 
@@ -17,11 +17,11 @@ const Hero = () => {
           <HeroDescr>
             Инвестируй в криптовалюту и управляй цифровыми активами с помощью Smart Portfolio
           </HeroDescr>
-          <Button xxl>Попробовать бесплатно</Button>
+          <Link href="#" xxl>Попробовать бесплатно</Link>
         </HeroContent>
       </HeroContainer>
       <picture>
-        <HeroImage src={heroImage} srcSet={`${heroImage2x} 2x`} alt="Paxaro logo"/>
+        <HeroImage src={heroImage} srcSet={`${heroImage2x} 2x`} alt="Paxaro hero cover"/>
       </picture>
     </StyledHero>
   )
@@ -34,10 +34,11 @@ const StyledHero = styled.section`
 `
 
 const HeroContainer = styled(Container)`
-  padding-top: 100px;
+  padding-top: calc(${PRIMARY.primaryVerticalIndent} * 2);
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
 
   @media (max-width: 1023px) {
-    padding-top: 150px;
+    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};
   }
 `
 
