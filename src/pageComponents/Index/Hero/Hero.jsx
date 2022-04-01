@@ -34,7 +34,7 @@ const StyledHero = styled.section`
 `
 
 const HeroContainer = styled(Container)`
-  padding-top: calc(${PRIMARY.primaryVerticalIndent} * 2);
+  padding-top: ${PRIMARY.primaryVerticalIndent};
   padding-bottom: ${PRIMARY.primaryVerticalIndent};
 
   @media (max-width: 1023px) {
@@ -78,6 +78,7 @@ const HeroImage = styled.img`
 
   @media (max-width: 1023px) {
     margin-top: 32px;
+    padding-left: ${PRIMARY.primaryHorizontalIndent};
     max-width: none;
     width: 520px;
   }

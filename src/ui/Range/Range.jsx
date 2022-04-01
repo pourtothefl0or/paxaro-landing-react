@@ -5,25 +5,18 @@ import 'rc-slider/assets/index.css'
 import './range.css'
 import { COLORS, TYPOGRAPHY } from '../../constants'
 
-const Range = ({childValue}) => {
-  const rangeValues = {
-    min: 2,
-    max: 5,
-    defaultValue: 3,
-    step: 1
-  }
-
+const Range = ({min, max, defaultValue, step, childValue}) => {
   return (
     <StyledSlider>
-      <SliderPoint>{rangeValues.min}</SliderPoint>
+      <SliderPoint>{min}</SliderPoint>
       <Slider
-        min={rangeValues.min}
-        max={rangeValues.max}
-        defaultValue={rangeValues.defaultValue}
-        step={rangeValues.step}
+        min={min}
+        max={max}
+        defaultValue={defaultValue}
+        step={step}
         onChange={(value) => childValue(value)}
       />
-      <SliderPoint>{rangeValues.max}</SliderPoint>
+      <SliderPoint>{max}</SliderPoint>
     </StyledSlider>
   )
 }

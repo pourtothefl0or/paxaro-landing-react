@@ -2,6 +2,8 @@ import React from 'react'
 import '../styles/style.css'
 import { Header, Footer, Cookie } from '../components'
 import { Hero, Advantages, Offers, Program, App, Feedback } from '../pageComponents/Index'
+import styled from 'styled-components'
+import { PRIMARY } from '../constants'
 
 const Main = () => {
   const menuList = [
@@ -37,18 +39,26 @@ const Main = () => {
   return (
     <>
       <Header links={{menuList, submenuList, socialList}}/>
-      <main>
+      <StyledMain>
         <Hero/>
         <Advantages/>
         <Offers/>
         <Program/>
         <App/>
         <Feedback/>
-      </main>
+      </StyledMain>
       <Footer links={{menuList, submenuList, socialList, politicsList}}/>
       <Cookie/>
     </>
   )
 }
+
+const StyledMain = styled.main`
+  padding: ${PRIMARY.primaryVerticalIndent} 0;
+
+  @media (max-width: 1023px) {
+    padding: ${PRIMARY.primaryVerticalIndentSmall} 0;
+  }
+`
 
 export default Main

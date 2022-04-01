@@ -20,27 +20,25 @@ const Program = () => {
     },
   ]
 
+  const rangeValues = {
+    min: 2,
+    max: 5,
+    defaultValue: 3,
+    step: 1
+  }
+
   const radioDefaultValue = radioList[0].value
   const [radioValue, setRadioValue] = useState(radioDefaultValue)
 
-  const getChildValue = el => console.log(el)
-  // const [rangeValue, setRangeValue] = useState(3)
+  const [rangeValue, setRangeValue] = useState(3)
+  const getChildValue = el => setRangeValue(el)
 
-  const calcYourBonus = () => {
-    let point = 240
-    let friends = 3
+  let point = 240
+  let friends = rangeValue
+  let coefficient = radioValue === radioDefaultValue ? 2 : 8
 
-    return point * friends
-  }
-
-  const calcSumBonus = () => {
-    let bonus = calcYourBonus()
-    let point = 290
-    let friends = 3
-    let coefficient = radioValue === radioDefaultValue ? 2 : 4
-
-    return bonus + friends * (coefficient * point)
-  }
+  const calcYourBonus = () => point * friends
+  const calcSumBonus = () => calcYourBonus() + friends * (coefficient * point)
 
   return (
     <StyledProgram>
@@ -72,7 +70,13 @@ const Program = () => {
           </ProgramPlan>
           <ProgramFriends>
             <FormTitle>Количество друзей</FormTitle>
-              <Range childValue={getChildValue}/>
+              <Range
+                childValue={getChildValue}
+                min={rangeValues.min}
+                max={rangeValues.max}
+                defaultValue={rangeValues.defaultValue}
+                step={rangeValues.step}
+              />
           </ProgramFriends>
           <ProgramBonus>
             <ProgramBonusTitle>

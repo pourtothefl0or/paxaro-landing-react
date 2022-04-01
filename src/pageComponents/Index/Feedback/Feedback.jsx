@@ -81,7 +81,7 @@ const StyledFeedback = styled.section`
 
 const FeedbackContainer = styled(Container)`
   padding-top: ${PRIMARY.primaryVerticalIndent};
-  padding-bottom: calc(${PRIMARY.primaryVerticalIndent} * 2);
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
 
   @media (max-width: 1023px) {
     padding-top: ${PRIMARY.primaryVerticalIndentSmall};
