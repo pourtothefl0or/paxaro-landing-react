@@ -30,7 +30,7 @@ const Program = () => {
   const radioDefaultValue = radioList[0].value
   const [radioValue, setRadioValue] = useState(radioDefaultValue)
 
-  const [rangeValue, setRangeValue] = useState(3)
+  const [rangeValue, setRangeValue] = useState(rangeValues.defaultValue)
   const getChildValue = el => setRangeValue(el)
 
   let point = 240

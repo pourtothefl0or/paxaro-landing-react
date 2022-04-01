@@ -9,46 +9,44 @@ import iconChinese from '../../assets/images/Flags/circle-chinese.svg'
 import iconIndonesian from '../../assets/images/Flags/circle-indonesian.svg'
 
 const Language = () => {
-  const [menuVisible, setMenuVisible] = useState(false)
-
   const languageList = [
     {
-      id: '1',
+      id: 1,
       value: 'russian',
       abbr: 'Ru',
       label: 'Россия',
       image: iconRussian
     },
     {
-      id: '2',
+      id: 2,
       value: 'english',
       abbr: 'En',
       label: 'English',
       image: iconEnglish
     },
     {
-      id: '3',
+      id: 3,
       value: 'kazakh',
       abbr: 'Kz',
       label: 'Қазақстан',
       image: iconKazakh
     },
     {
-      id: '4',
+      id: 4,
       value: 'turkish',
       abbr: 'Tr',
       label: 'Türkiye',
       image: iconTurkish
     },
     {
-      id: '5',
+      id: 5,
       value: 'chinese',
       abbr: 'Zh',
       label: '中国',
       image: iconChinese
     },
     {
-      id: '6',
+      id: 6,
       value: 'indonesian',
       abbr: 'Id',
       label: 'Indonesia',
@@ -56,26 +54,44 @@ const Language = () => {
     },
   ]
 
-  // function test (id) {
-  //   const neededLang = languageList.find()
-  //   if (innerWidth > 120)
-  // }
+  const [menuVisible, setMenuVisible] = useState(false)
 
-  const item = languageList[0]
+  const [optionKey, setOptionKey] = useState(languageList[0].id)
+
+  const getOptionId = el => setOptionKey(el)
+
+  const findId = items => items.id === optionKey
+  const item = languageList.find(findId)
+
+  const [windowWidth, getWindowWidth] = useState(window.innerWidth)
+  window.addEventListener("resize", () => getWindowWidth(window.innerWidth));
 
   return (
-    // onClick={}
     <CustomSelect>
-      {/* <SelectOption onClick={() => setMenuVisible(!menuVisible)}>
+      <SelectButton
+        className='select-option--single'
+        onClick={() => setMenuVisible(!menuVisible)}
+      >
         <SelectOptionImage src={item.image} alt={item.label}/>
-        <SelectOptionText>{item.label}</SelectOptionText>
-      </SelectOption> */}
-      <SelectButton onClick={() => setMenuVisible(!menuVisible)}>{item.abbr}</SelectButton>
+        <SelectOptionText>
+          {
+            windowWidth > 1024
+            ? item.abbr
+            : item.label
+          }
+        </SelectOptionText>
+      </SelectButton>
       <SelectListInner className={!menuVisible ? '' : 'is-open'}>
         <SelectList>
           {
             languageList.map(el =>
-              <SelectOption key={el.id}>
+              <SelectOption
+                key={el.id}
+                onClick={() => {
+                  getOptionId(el.id)
+                  setMenuVisible(!menuVisible)
+                }}
+              >
                 <SelectOptionImage src={el.image} alt={el.label}/>
                 <SelectOptionText>{el.label}</SelectOptionText>
               </SelectOption>
@@ -87,31 +103,53 @@ const Language = () => {
   )
 }
 
+const SelectButton = styled.div`
+  position: relative;
+  ${TYPOGRAPHY.caption2Semibold14}
+  transition: all ${PRIMARY.primaryAnimation};
+  transition-property: background-color;
+  cursor: pointer;
+
+  @media (min-width: 1024px) {
+    display: inline-block;
+    border: 2px solid transparent;
+    border-radius: ${PRIMARY.primaryRadius};
+    padding: 9px;
+    text-align: center;
+    color: ${COLORS.black};
+    background: ${COLORS.white};
+    transition: all ${PRIMARY.primaryAnimation};
+    transition-property: box-shadow;
+
+    .select-option__image {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      box-shadow: ${PRIMARY.primaryShadow};
+    }
+  }
+
+  @media (max-width: 1023px) {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    padding: 10px 20px;
+    color: ${COLORS.white};
+    background-color: ${COLORS.darkBlack};
+
+    &:hover {
+      background-color: #292929;
+    }
+  }
+`
+
 const CustomSelect = styled.div`
   position: relative;
 
   @media (max-width: 1023px) {
-    margin-left: -${PRIMARY.primaryHorizontalIndent};
-    margin-right: -${PRIMARY.primaryHorizontalIndent};
-  }
-`
-
-const SelectButton = styled.button`
-  display: inline-block;
-  border: 2px solid transparent;
-  border-radius: ${PRIMARY.primaryRadius};
-  padding: 9px;
-  ${TYPOGRAPHY.caption2Semibold14}
-  text-align: center;
-  color: ${COLORS.black};
-  background: ${COLORS.white};
-  transition: all ${PRIMARY.primaryAnimation};
-  transition-property: box-shadow;
-  cursor: pointer;
-
-  &:focus,
-  &:hover {
-    box-shadow: ${PRIMARY.primaryShadow};
+    margin: auto -${PRIMARY.primaryHorizontalIndent} 0;
   }
 `
 
@@ -160,11 +198,13 @@ const SelectOption = styled.div`
   display: flex;
   align-items: center;
   column-gap: 8px;
-  color: ${COLORS.black};
+  transition: all ${PRIMARY.primaryAnimation};
+  transition-property: background-color;
   cursor: pointer;
 
   @media (min-width: 1024px) {
     padding: 7px 22px 7px 13px;
+    color: ${COLORS.black};
 
     &::after {
       content: '';
@@ -192,8 +232,6 @@ const SelectOption = styled.div`
     padding: 10px 20px;
     color: ${COLORS.white};
     background-color: ${COLORS.darkBlack};
-    transition: all ${PRIMARY.primaryAnimation};
-    transition-property: background-color;
 
     &:hover {
       background-color: #292929;
@@ -207,7 +245,9 @@ const SelectOptionText = styled.p`
   ${TYPOGRAPHY.caption2Semibold14}
 `
 
-const SelectOptionImage = styled.img`
+const SelectOptionImage = styled.img.attrs({
+  className: 'select-option__image'
+})`
   --size: 14px;
 
   display: inline-block;

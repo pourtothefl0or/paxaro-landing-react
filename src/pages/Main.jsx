@@ -57,7 +57,7 @@ const StyledMain = styled.main`
   padding: ${PRIMARY.primaryVerticalIndent} 0;
 
   @media (max-width: 1023px) {
-    padding: ${PRIMARY.primaryVerticalIndentSmall} 0;
+    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};
   }
 `
 

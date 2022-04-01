@@ -47,12 +47,16 @@ const CookieContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 121px;
-  padding-top: 23px;
-  padding-bottom: 23px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media (min-width: 1024px) {
+    column-gap: 121px;
+  }
 
   @media (max-width: 1023px) {
-    column-gap: 60px;
+    row-gap: 10px;
+    flex-direction: column;
   }
 `
 

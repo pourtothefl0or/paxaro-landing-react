@@ -171,6 +171,8 @@ const HeaderBottom = styled.div`
     transition-property: transform, opacity, visibility;
 
     &.is-open {
+      display: flex;
+      flex-direction: column;
       opacity: 1;
       visibility: visible;
       transform: translateY(0%);
