@@ -1,9 +1,33 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../../constants'
 import { Container, Title } from '../../../components'
 
 const Advantages = () => {
+  const advantagesList = [
+    {
+      id: 1,
+      title: 'Активы хранятся на бирже',
+      descr: 'Ваши деньги не хранятся у нас. Все активы размещены на официальной бирже. Она страхует их и шифрует данные. Взлом этих систем невозможен.',
+      textColor: COLORS.white,
+      bgColor: COLORS.black,
+    },
+    {
+      id: 2,
+      title: 'Алгоритм минимизирует риски',
+      descr: 'Риски минимизированы. Наш алгоритм умеет учитывать все изменения курсов и рыночные тренды. Поэтому пакет постоянно диверсифицируется в соответствии с ситуацией на бирже.',
+      textColor: COLORS.black,
+      bgColor: COLORS.lightCard
+    },
+    {
+      id: 3,
+      title: 'Доходность зависит от сроков',
+      descr: 'Доходность зависит от сроков. Чем дольше инвестиции находятся в обороте, тем лучше  алгоритм с ними работает. Практика показала, что инвестиции в долгую приносят большую прибыль.',
+      textColor: COLORS.white,
+      bgColor: COLORS.green,
+    },
+  ]
+
   return (
     <StyledAdvantages>
       <AdvantagesContainer>
@@ -15,36 +39,21 @@ const Advantages = () => {
           Мы проверили инструмент на реальных инвестициях - он позволяет управлять активами просто и быстро
         </AdvantagesDescr>
         <AdvantagesList>
-          <AdvantagesListItem>
-            <AdvantagesCard black>
-              <AdvantageCardTitle>
-                <span>Активы</span> <br/> хранятся <br/> на бирже
-              </AdvantageCardTitle>
-              <AdvantageCardDescr>
-                Ваши деньги не хранятся у нас. Все активы размещены на официальной бирже. Она страхует их и шифрует данные. Взлом этих систем невозможен.
-              </AdvantageCardDescr>
-            </AdvantagesCard>
-          </AdvantagesListItem>
-          <AdvantagesListItem>
-            <AdvantagesCard white>
-              <AdvantageCardTitle>
-                <span>Алгоритм</span> <br/> минимизирует <br/> риски
-              </AdvantageCardTitle>
-              <AdvantageCardDescr>
-                Риски минимизированы. Наш алгоритм умеет учитывать все изменения курсов и рыночные тренды. Поэтому пакет постоянно диверсифицируется в соответствии с ситуацией на бирже.
-              </AdvantageCardDescr>
-            </AdvantagesCard>
-          </AdvantagesListItem>
-          <AdvantagesListItem>
-            <AdvantagesCard green>
-              <AdvantageCardTitle>
-                <span>Доходность</span> <br/> зависит <br/> от сроков
-              </AdvantageCardTitle>
-              <AdvantageCardDescr>
-                Доходность зависит от сроков. Чем дольше инвестиции находятся в обороте, тем лучше  алгоритм с ними работает. Практика показала, что инвестиции в долгую приносят большую прибыль.
-              </AdvantageCardDescr>
-            </AdvantagesCard>
-          </AdvantagesListItem>
+          {
+            advantagesList.map(item =>
+              <Card key={item.id}>
+                <CardInner $bgColor={item.bgColor} $textColor={item.textColor}>
+                  <CardFront>
+                    <CardTitle>{item.title}</CardTitle>
+                    <CardDescr>{item.descr}</CardDescr>
+                  </CardFront>
+                  <CardBack>
+                    <CardDescr>{item.descr}</CardDescr>
+                  </CardBack>
+                </CardInner>
+              </Card>
+            )
+          }
         </AdvantagesList>
       </AdvantagesContainer>
     </StyledAdvantages>
@@ -83,150 +92,105 @@ const AdvantagesList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
   gap: 20px;
-
-  @media (max-width: 1023px) {
-    --card-width: 300px;
-  }
 `
 
-const AdvantagesListItem = styled.li``
-
-const AdvantagesCard = styled.div.attrs({
-  className: 'advantages-card'
-})`
-  position: relative;
-  z-index: 1;
-  border-radius: ${SECONDARY.secondaryRadius};
-  padding: 40px 40px;
-  height: 100%;
-  min-height: 390px;
-
-  .advantages-card {
-    &__title,
-    &__descr {
-      transition: all ${PRIMARY.primaryAnimation};
-      transition-property: opacity, visibility;
-    }
-  }
-
-  // black
-  ${props => props.black && css`
-    color: ${COLORS.white};
-    background-color: ${COLORS.black};
-
-    .advantages-card__title::after,
-    .advantages-card__title span::after {
-      background-color: ${COLORS.green};
-    }
-  `}
-
-  // white
-  ${props => props.white && css`
-    color: ${COLORS.black};
-    background-color: ${COLORS.lightCard};
-
-    .advantages-card__title::after,
-    .advantages-card__title span::after {
-      background-color: ${COLORS.green};
-    }
-  `}
-
-  // green
-  ${props => props.green && css`
-    color: ${COLORS.white};
-    background-color: ${COLORS.green};
-
-    .advantages-card__title::after,
-    .advantages-card__title span::after {
-      background-color: ${COLORS.black};
-    }
-  `}
+const Card = styled.li`
+  width: 100%;
+  min-height: 380px;
 
   @media (min-width: 1024px) {
-    span {
-      position: relative;
-      z-index: 1;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -10px;
-        z-index: -1;
-        display: inline-block;
-        width: calc(100% + 20px);
-        height: 100%;
-        background-color: ${COLORS.green};
-      }
-    }
-
-    .advantages-card__title {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-    }
-
     &:hover {
-      .advantages-card {
-        &__title {
-          opacity: 0;
-          visibility: hidden;
-        }
-
-        &__descr {
-          opacity: 1;
-          visibility: visible;
-        }
+      .card__inner {
+        transform: rotateY(180deg);
       }
     }
-  }
-
-  @media (max-width: 1023px) {
-    ${TYPOGRAPHY.subtitle1Bold24}
   }
 `
 
-const AdvantageCardTitle = styled.p.attrs({
-  className: 'advantages-card__title'
+const CardInner = styled.div.attrs({
+  className: 'card__inner'
 })`
-  display: inline-block;
-  margin: 0;
-  ${TYPOGRAPHY.title3Bold36}
-  color: inherit;
+  width: 100%;
+  height: 100%;
 
-  @media (max-width: 1023px) {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 25px;
-    ${TYPOGRAPHY.subtitle1Bold24}
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -10px;
-      z-index: -1;
-      display: inline-block;
-      width: calc(100% + 20px);
+  .card {
+    &__front,
+    &__back {
+      border-radius: ${SECONDARY.secondaryRadius};
+      padding: 40px;
+      width: 100%;
       height: 100%;
-      background-color: ${COLORS.green};
+      background-color: ${props => props.$bgColor};
     }
 
-    br {
+    &__title,
+    &__descr {
+      color: ${props => props.$textColor};
+    }
+  }
+
+  @media (min-width: 1024px) {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.6s;
+    transition-property: transform;
+
+    .card {
+      &__front,
+      &__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+      }
+    }
+  }
+`
+
+const CardFront = styled.div.attrs({
+  className: 'card__front'
+})`
+  @media (min-width: 1024px) {
+    .card__descr {
       display: none;
     }
   }
 `
 
-const AdvantageCardDescr = styled.p.attrs({
-  className: 'advantages-card__descr'
+const CardBack = styled.div.attrs({
+  className: 'card__back'
+})`
+  transform: rotateY(180deg);
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+`
+
+const CardTitle = styled.p.attrs({
+  className: 'card__title'
 })`
   margin: 0;
-  ${TYPOGRAPHY.subtitle2Regular24}
+  color: ${COLORS.white};
 
   @media (min-width: 1024px) {
-    opacity: 0;
-    visibility: hidden;
+    ${TYPOGRAPHY.title2Bold40}
+  }
+
+  @media (max-width: 1023px) {
+    margin-bottom: 20px;
+    ${TYPOGRAPHY.subtitle1Bold24}
+  }
+`
+
+const CardDescr = styled.p.attrs({
+  className: 'card__descr'
+})`
+  margin: 0;
+  color: ${COLORS.white};
+
+  @media (min-width: 1024px) {
+    ${TYPOGRAPHY.subtitle2Regular24}
   }
 
   @media (max-width: 1023px) {

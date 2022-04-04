@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY } from '../../constants'
 import iconRussian from '../../assets/images/Flags/circle-russian.svg'
@@ -64,7 +64,10 @@ const Language = () => {
   const item = languageList.find(findId)
 
   const [windowWidth, getWindowWidth] = useState(window.innerWidth)
-  window.addEventListener("resize", () => getWindowWidth(window.innerWidth));
+
+  useEffect(() => {
+    window.addEventListener("resize", () => getWindowWidth(window.innerWidth));
+  })
 
   return (
     <CustomSelect>
@@ -242,6 +245,7 @@ const SelectOption = styled.div`
 const SelectOptionText = styled.p`
   margin: 0;
   width: 100%;
+  min-width: 16px;
   ${TYPOGRAPHY.caption2Semibold14}
 `
 

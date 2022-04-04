@@ -15,6 +15,7 @@ const StyledTitleInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
   text-align: center;
 `
 
@@ -33,7 +34,7 @@ const StyledSubTitle = styled.p`
 
 const StyledTitle = styled.h2`
   display: block;
-  margin: 0 0 20px;
+  margin: 0;
   ${TYPOGRAPHY.title2Bold40}
   color: ${COLORS.black};
 

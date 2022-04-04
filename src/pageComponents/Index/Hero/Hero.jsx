@@ -31,15 +31,15 @@ const StyledHero = styled.section`
   position: relative;
   overflow: hidden;
   background-color: ${COLORS.white};
+  padding-bottom: ${PRIMARY.primaryVerticalIndent};
+
+  @media (max-width: 1023px) {
+    padding-top: ${PRIMARY.primaryVerticalIndentSmall};
+  }
 `
 
 const HeroContainer = styled(Container)`
   padding-top: ${PRIMARY.primaryVerticalIndent};
-  padding-bottom: ${PRIMARY.primaryVerticalIndent};
-
-  @media (max-width: 1023px) {
-    padding-bottom: ${PRIMARY.primaryVerticalIndentSmall};
-  }
 `
 
 const HeroContent = styled.div`

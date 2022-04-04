@@ -73,6 +73,8 @@ const InputPlaceholder = styled.p.attrs({
   color: ${COLORS.darkGray};
   ${TYPOGRAPHY.body1Regular18}
   transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
   transition: all ${PRIMARY.primaryAnimation};
   transition-property: font-size, color, transform;
 `

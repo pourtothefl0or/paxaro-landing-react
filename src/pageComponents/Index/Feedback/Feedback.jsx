@@ -3,15 +3,24 @@ import styled from 'styled-components'
 import { COLORS, TYPOGRAPHY, PRIMARY, SECONDARY } from '../../../constants'
 import { Container, Title, Descr } from '../../../components'
 import { Input, Button } from '../../../ui'
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 
 const Feedback = () => {
-  const {register, handleSubmit, reset, formState:{errors, isSubmitSuccessful}} = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState:{ errors, isSubmitSuccessful }
+  } = useForm({ mode: 'onBlur' })
+
+  const showError = (field) => field ? 'is-error' : ''
 
   const onSubmit = data => {
     console.log(data)
     reset()
   }
+
+  console.log(errors)
 
   return (
     <StyledFeedback>
@@ -32,9 +41,9 @@ const Feedback = () => {
                 placeholder="Имя*"
                 type="text"
                 {...register('firstName', {
-                  required: true
+                  required: true,
                 })}
-                labelClassName={errors.firstName && 'is-error'}
+                labelClassName={showError(errors.firstName)}
               />
               <Input
                 placeholder="Ваш e-mail*"
@@ -43,19 +52,19 @@ const Feedback = () => {
                   required: true,
                   pattern: /^\S+@\S+$/i
                 })}
-                labelClassName={errors.email && 'is-error'}
+                labelClassName={showError(errors.email)}
               />
               <Input
                 placeholder="Фамилия"
                 type="text"
                 {...register('lastName')}
-                labelClassName={errors.lastName && 'is-error'}
+                labelClassName={showError(errors.lastName)}
               />
               <Input
                 placeholder="Ваш номер"
                 type="tel"
                 {...register('phoneNumber')}
-                labelClassName={errors.phoneNumber && 'is-error'}
+                labelClassName={showError(errors.phoneNumber)}
               />
               <FeedbackAlert>
                 Нажимая на кнопку, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>

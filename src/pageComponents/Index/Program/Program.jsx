@@ -34,11 +34,10 @@ const Program = () => {
   const getChildValue = el => setRangeValue(el)
 
   let point = 240
-  let friends = rangeValue
   let coefficient = radioValue === radioDefaultValue ? 2 : 8
 
-  const calcYourBonus = () => point * friends
-  const calcSumBonus = () => calcYourBonus() + friends * (coefficient * point)
+  const calcYourBonus = () => point * rangeValue
+  const calcSumBonus = () => calcYourBonus() + rangeValue * (coefficient * point)
 
   return (
     <StyledProgram>
@@ -61,7 +60,7 @@ const Program = () => {
                     value={item.value}
                     label={item.label}
                     key={item.id}
-                    checked={radioValue === item.value ? true : false}
+                    checked={radioValue === item.value}
                     onChange={() => setRadioValue(item.value)}
                   />
                 )
